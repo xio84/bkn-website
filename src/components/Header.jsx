@@ -10,7 +10,7 @@ import bknLogo from "../assets/logo.png";
 import Button from "@mui/material/Button";
 
 export default function Header(props) {
-  const { contents, activeContent } = props;
+  const { paths, activeContent } = props;
 
   return (
     <AppBar
@@ -37,30 +37,27 @@ export default function Header(props) {
           </Link>
         </div>
         <nav style={{ flexGrow: 1, justifyContent: "center", alignItems: "center", display: "flex" }}>
-          {contents.map((content) => (
+          {paths.map((path) => (
             <Link
               variant="button"
-              href="/"
+              href={path.path}
               sx={{
                 my: 1,
                 mx: 1.5,
                 textTransform: "none",
-                color: "#003E69",
+                color: path.pathName === activeContent ? "#003E69" : "#3030303C",
                 textDecoration: "unset",
                 fontFamily: "Syne",
-                fontWeight: content === activeContent ? "bold" : "normal",
+                fontWeight: path.pathName === activeContent ? "bold" : "normal",
               }}
             >
-              {content}
+              {path.pathName}
             </Link>
           ))}
         </nav>
         <div style={{ flexGrow: 0 }}>
           <Link href="/">
-            <Button variant="contained" sx={{
-              fontFamily: "Syne",
-              width: 200
-            }}>Login</Button>
+            <Button variant="contained">Login</Button>
           </Link>
         </div>
       </Toolbar>
