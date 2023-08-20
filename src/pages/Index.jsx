@@ -47,31 +47,31 @@ function createData(name = '', commodity = '', slot = 0, price = 0, date=new Dat
 
 const rows = [
   createData(
-      "aa",
-      "Rice",
-      100,
+      "Muh. Alkautzar Sanusi",
+      "#Commodity: Rice",
+      3,
       1000000,
+      new Date('2023-07-03')
+  ),
+  createData(
+      "Muh. Yafi",
+      "#Commodity: Coffe Beans",
+      10,
+      3000000,
       new Date('2023-05-05')
   ),
   createData(
-      "aa",
-      "Oil",
-      100,
-      1000000,
-      new Date('2023-05-05')
+      "Aga Subagja",
+      "#Commodity: Cooking Oil",
+      5,
+      3800000,
+      new Date('2022-11-01')
   ),
   createData(
-      "aa",
-      "Rice",
-      100,
-      1000000,
-      new Date('2023-05-05')
-  ),
-  createData(
-      "aa",
-      "Coffee",
-      100,
-      1000000,
+      "Oksidian Tafly",
+      "#Commodity: Coffe Beans",
+      15,
+      4500000,
       new Date('2023-05-05')
   ),
 ]
@@ -93,24 +93,15 @@ function Home(props) {
               <Typography
                 align="left"
                 textDecoration="unset"
-                sx={{
-                  color: "#243a72",
-                  fontFamily: "Syne",
-                  fontSize: "45px",
-                  fontWeight: 700,
-                  lineHeight: "55px",
-                }}
+                variant="h1"
               >
                 Indonesia's Natural 
                 Potential in Different 
                 Dimension
               </Typography>
               <Typography 
-              variant="h5" 
+              variant="body1" 
               align="left" 
-              color="#003E69"
-              textDecoration="unset"
-              fontFamily="Montserrat"
               paragraph>
               KBI presents an innovation in exploring Indonesia's natural
               potential in the technological dimension in the form of nft.
@@ -135,18 +126,24 @@ function Home(props) {
         <Stack spacing={8}>
           <Section subtext="Ready to Collect" heading="Latest Collections" />
           {/* List of collections */}
-          <Grid container spacing={2}>
+          <Grid container justifyContent={"space-evenly"}>
             { data.map((content) =>
-            <Grid item xs={12} md={4} overflow={"hidden"}>
-              <Stack>
+            <Grid item xs={12} md={3.5}>
+              <Stack spacing={2}>
                 <Box component={"img"} src={content.pic} alt={content.name} borderRadius={3} sx={{float: "center"}}>
                 </Box>
-                <Stack direction={"row"} flexWrap={"nowrap"} justifyContent={"space-between"}>
-                  <Typography>#Commodity:</Typography>
-                  <Typography>{content.slot} Slot</Typography>
-                </Stack>
-                <Typography>{content.name}</Typography>
-                <Typography>Rp. {content.price.toLocaleString()}</Typography>
+                <Grid container>
+                  <Grid item xs={6}>
+                    <Typography variant="h3">#Commodity:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Typography align="right" variant="subtitle1">{content.slot} Slot</Typography>
+                  </Grid>
+                  <Grid item>
+                    <Typography variant="h3">{content.name}</Typography>
+                  </Grid>
+                </Grid>
+                <Typography variant="body2" fontWeight={400}>Rp. {content.price.toLocaleString()}</Typography>
               </Stack>
             </Grid>
             )}

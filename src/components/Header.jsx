@@ -57,7 +57,7 @@ export default function Header(props) {
         </nav>
         <div style={{ flexGrow: 0 }}>
           <Link href="/">
-            <Button variant="contained">Login</Button>
+            <Button variant="outlined" sx={{ width: 160 }}>Login</Button>
           </Link>
         </div>
       </Toolbar>

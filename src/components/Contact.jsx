@@ -9,7 +9,7 @@ export default function Contact(props) {
     maxWidth="false" 
     sx={{
       backgroundColor: "rgba(251, 251, 251, 1)", 
-      borderRadius: "2",
+      borderRadius: "20px",
       padding: "20px",
   }}>
     <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"}>

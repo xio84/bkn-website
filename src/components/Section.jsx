@@ -9,11 +9,8 @@ export default function Section(props) {
   return (
     <Stack spacing={0}>
     <Typography 
-      variant="body" 
-      align="left" 
-      color="grey"
-      textDecoration="unset"
-      fontFamily="Montserrat"
+      variant="subtitle1" 
+      align="left"
       marginBottom={0}
       paragraph
     >
@@ -22,11 +19,6 @@ export default function Section(props) {
     <Typography
       variant="h2"
       align="left"
-      color="#003E69"
-      textDecoration="unset"
-      fontFamily="Syne"
-      fontSize={30}
-      fontWeight={700}
     >
       {heading}
     </Typography>
