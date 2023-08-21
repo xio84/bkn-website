@@ -25,3 +25,6 @@ yarn-error.log*
 # local dev files
 tmp
 .vscode
+
+#local deployment files
+*deploy.yaml

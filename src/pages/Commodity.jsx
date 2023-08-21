@@ -156,33 +156,23 @@ function Commodity(props) {
                   velit egestas blandit in sed enim. Nam a leo ac enim lacinia lobortis.
                   </Typography>
                 </Stack>
-                <Grid container rowSpacing={2} justifyContent={"space-between"} mt={"auto"}>
-                  <Grid item xs={4}>
+                <Grid container rowSpacing={2} justifyContent={"space-evenly"} mt={"auto"}>
+                  <Grid item xs={6}>
+                    <Typography variant="subtitle1">
+                      Slots Available
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={6}>
                     <Typography variant="subtitle1">
                       Current Price
                     </Typography>
                   </Grid>
-                  <Grid item xs={4}>
-                    <Typography variant="subtitle1">
-                      Slot Price
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={4}>
-                    <Typography variant="subtitle1">
-                      Minimum Price
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={4}>
-                    <Typography variant="h2" fontFamily={"Montserrat"} fontWeight={700} letterSpacing={-0.03} fontSize={15}>
-                      Rp. 100.000.000,-
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={4}>
+                  <Grid item xs={6}>
                     <Typography variant="h3" fontFamily={"Montserrat"} fontWeight={700} letterSpacing={-0.03} fontSize={15}>
                       100 Slot
                     </Typography>
                   </Grid>
-                  <Grid item xs={4}>
+                  <Grid item xs={6}>
                     <Typography display={"inline"} variant="h3" fontFamily={"Montserrat"} fontWeight={700} letterSpacing={-0.03} fontSize={15}>
                     Rp. 100.000.000,-
                     </Typography>
@@ -191,14 +181,14 @@ function Commodity(props) {
                   <Grid item xs={12}>
                     <Divider></Divider>
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid item xs={5}>
                     <Button variant="contained" fullWidth>
                       Buy Now
                     </Button>
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid item xs={5}>
                     <Button variant="outlined" fullWidth>
-                      Make Offer
+                      More Details
                     </Button>
                   </Grid>
                 </Grid>
@@ -206,7 +196,9 @@ function Commodity(props) {
             </Grid>
           </Grid>
           <Section subtext="Commodity Prospect" heading="Latest Commodity Purchase" />
-          <MainTable data={rows} />
+          <MainTable data={rows} headers={["Name", "Commodity", "Slots Purchased", "Buying Price", "Total Price", "Date"]}/>
+          <Section subtext="Commodity Prospect" heading="Latest Commodity Sale" />
+          <MainTable data={rows} headers={["Name", "Commodity", "Slots Sold", "Buying Price", "Total Price", "Date"]}/>
           <Contact/>
         </Stack>
       </Container>

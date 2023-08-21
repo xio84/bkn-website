@@ -18,23 +18,43 @@ import Section from "../components/Section";
 import MainTable from "../components/Table";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+import { Paper } from "@mui/material";
+import Carousel from "react-material-ui-carousel";
 
 // Data seeders
 const data = [
   {
-    "pic": require("../assets/commodities/Coffee.png"),
+    "pic": "Coffee.png",
     "name": "Coffee",
     "slot": 100,
     "price": 100000000
   },
   {
-    "pic": require("../assets/commodities/Oil.png"),
+    "pic": "Oil.png",
     "name": "Oil",
     "slot": 100,
     "price": 100000000
   },
   {
-    "pic": require("../assets/commodities/Rice.png"),
+    "pic": "Rice.png",
+    "name": "Rice",
+    "slot": 100,
+    "price": 100000000
+  },
+  {
+    "pic": "Coffee.png",
+    "name": "Coffee",
+    "slot": 100,
+    "price": 100000000
+  },
+  {
+    "pic": "Oil.png",
+    "name": "Oil",
+    "slot": 100,
+    "price": 100000000
+  },
+  {
+    "pic": "Rice.png",
     "name": "Rice",
     "slot": 100,
     "price": 100000000
@@ -76,6 +96,44 @@ const rows = [
   ),
 ]
 
+function threeGrid(d) {
+  return (
+      <Grid container justifyContent={"space-evenly"}>
+      { d.map((content) =>
+      <Grid item xs={12} md={3.5}>
+      <Paper>
+        <Stack spacing={2}>
+          <Box component={"img"} src={require(`../assets/commodities/${content.pic}`)} alt={content.name} borderRadius={3} sx={{float: "center"}}>
+          </Box>
+          <Grid container padding={2}>
+            <Grid item xs={6}>
+              <Typography variant="h3">#Commodity:</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography align="right" variant="subtitle1">{content.slot} Slot</Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography variant="h3">{content.name}</Typography>
+            </Grid>
+            <Grid item paddingTop={4}>
+              <Typography variant="body2" fontWeight={400}>Rp. {content.price.toLocaleString()}</Typography>
+            </Grid>
+          </Grid>
+        </Stack>
+      </Paper>
+      </Grid>
+      )}
+    </Grid>
+  )
+}
+
+function splitByThree(d) {
+  let out = []
+  for (let i = 0; i < d.length; i += 3) {
+    out.push(threeGrid(d.slice(i, i+3)))
+  }
+  return out
+}
 
 function Home(props) {
   return (
@@ -126,30 +184,13 @@ function Home(props) {
         <Stack spacing={8}>
           <Section subtext="Ready to Collect" heading="Latest Collections" />
           {/* List of collections */}
-          <Grid container justifyContent={"space-evenly"}>
-            { data.map((content) =>
-            <Grid item xs={12} md={3.5}>
-              <Stack spacing={2}>
-                <Box component={"img"} src={content.pic} alt={content.name} borderRadius={3} sx={{float: "center"}}>
-                </Box>
-                <Grid container>
-                  <Grid item xs={6}>
-                    <Typography variant="h3">#Commodity:</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Typography align="right" variant="subtitle1">{content.slot} Slot</Typography>
-                  </Grid>
-                  <Grid item>
-                    <Typography variant="h3">{content.name}</Typography>
-                  </Grid>
-                </Grid>
-                <Typography variant="body2" fontWeight={400}>Rp. {content.price.toLocaleString()}</Typography>
-              </Stack>
-            </Grid>
-            )}
-          </Grid>
+          <Carousel animation="slide">
+            {splitByThree(data)}
+          </Carousel>
           <Section subtext="Commodity Prospect" heading="Latest Commodity Purchase" />
-          <MainTable data={rows} />
+          <MainTable data={rows} headers={["Name", "Commodity", "Slots Purchased", "Buying Price", "Total Price", "Date"]}/>
+          <Section subtext="Commodity Prospect" heading="Latest Commodity Sale" />
+          <MainTable data={rows} headers={["Name", "Commodity", "Slots Sold", "Buying Price", "Total Price", "Date"]}/>
           <Contact/>
         </Stack>
       </Container>

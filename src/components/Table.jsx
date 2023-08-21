@@ -4,37 +4,30 @@ import { Table, TableContainer, TableHead, TableRow, TableBody, TableCell, Stack
 
 
 export default function MainTable(props) {
-    const { data } = props;
+    const { headers, data } = props;
   return (
     <TableContainer sx={{backgroundColor: 'white'}}>
     <Table sx={{ minWidth: 650 }} aria-label="simple table">
       <TableHead sx={{ fontFamily: "Syne", fontWeight: 400}}>
         <TableRow>
-          <TableCell align="left">
-            <Typography variant="h4">
-            Name
-            </Typography>
-          </TableCell>
-          <TableCell>
-            <Typography variant="h4">
-            Commodity
-            </Typography>
-          </TableCell>
-          <TableCell>
-            <Typography variant="h4">
-            Total Slot
-            </Typography>
-          </TableCell>
-          <TableCell>
-            <Typography variant="h4">
-            Price
-            </Typography>
-          </TableCell>
-          <TableCell align="right">
-            <Typography variant="h4">
-            Date
-            </Typography>
-          </TableCell>
+            {headers.map((header, index) => {
+            if (index === headers.length - 1) {
+                return (
+                <TableCell align="right">
+                    <Typography variant="h4">
+                    {header}
+                    </Typography>
+                </TableCell>
+                )
+            } else {
+                return (
+                <TableCell>
+                    <Typography variant="h4">
+                    {header}
+                    </Typography>
+                </TableCell>
+                )
+            }})}
         </TableRow>
       </TableHead>
       <TableBody>
@@ -66,7 +59,12 @@ export default function MainTable(props) {
             </TableCell>
             <TableCell>
               <Typography variant="subtitle1">
-                {row.price}
+                Rp. {row.price.toLocaleString()}
+              </Typography>
+            </TableCell>
+            <TableCell>
+              <Typography variant="subtitle1">
+                Rp. {(row.price * row.slot).toLocaleString()}
               </Typography>
             </TableCell>
             <TableCell align="right">
