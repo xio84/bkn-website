@@ -18,7 +18,7 @@ import Section from "../components/Section";
 import MainTable from "../components/Table";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
-import { Paper } from "@mui/material";
+import { Card, CardActions, CardContent, CardMedia, Paper } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 
 // Data seeders
@@ -99,28 +99,51 @@ const rows = [
 function threeGrid(d) {
   return (
       <Grid container justifyContent={"space-evenly"}>
-      { d.map((content) =>
+      { d.map((content, index) =>
       <Grid item xs={12} md={3.5}>
-      <Paper>
-        <Stack spacing={2}>
-          <Box component={"img"} src={require(`../assets/commodities/${content.pic}`)} alt={content.name} borderRadius={3} sx={{float: "center"}}>
-          </Box>
-          <Grid container padding={2}>
-            <Grid item xs={6}>
-              <Typography variant="h3">#Commodity:</Typography>
+      <Card>
+        {/* <Stack spacing={2}> */}
+          <CardMedia component={"img"} src={require(`../assets/commodities/${content.pic}`)} alt={content.name} borderRadius={3}/>
+          { 
+          index === 0 && <Typography 
+            gutterBottom 
+            variant="subtitle1" 
+            sx={{
+              position: "absolute",
+              top: "0",
+              marginTop: 1,
+              marginLeft: 2,
+              padding: 0.5,
+              textAlign: "left",
+              backgroundColor: "yellow",
+              borderRadius: 0.5
+              }
+            }
+          >
+            Sale ending
+          </Typography>
+          }
+          <CardContent>
+            <Grid container>
+              <Grid item xs={6}>
+                <Typography variant="h3">#Commodity:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography align="right" variant="subtitle1">{content.slot} Slot</Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <Typography variant="h3">{content.name}</Typography>
+              </Grid>
+              <Grid item paddingTop={4}>
+                <Typography variant="body2" fontWeight={400}>Rp. {content.price.toLocaleString()}</Typography>
+              </Grid>
             </Grid>
-            <Grid item xs={6}>
-              <Typography align="right" variant="subtitle1">{content.slot} Slot</Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography variant="h3">{content.name}</Typography>
-            </Grid>
-            <Grid item paddingTop={4}>
-              <Typography variant="body2" fontWeight={400}>Rp. {content.price.toLocaleString()}</Typography>
-            </Grid>
-          </Grid>
-        </Stack>
-      </Paper>
+          </CardContent>
+          <CardActions sx={{ padding: 2 }}>
+            <Button variant="contained">Learn More</Button>
+          </CardActions>
+        {/* </Stack> */}
+      </Card>
       </Grid>
       )}
     </Grid>

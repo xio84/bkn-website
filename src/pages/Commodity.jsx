@@ -89,7 +89,7 @@ function Commodity(props) {
           </Typography>
           <Grid container>
             <Grid item xs={12} lg={6}>
-              <img src={coffee} alt="coffee" />
+              <img src={coffee} alt="coffee" style={{ maxWidth: "100%", maxHeight: "100%" }} />
             </Grid>
             <Grid item xs={12} lg={6}>
               <Stack spacing={8}>
