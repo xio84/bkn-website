@@ -2,12 +2,14 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 // import Button from "@mui/material/Button";
 import Toolbar from "@mui/material/Toolbar";
+import Container from "@mui/material/Container";
 // import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 
 // Assets
 import bknLogo from "../assets/logo.png";
 import Button from "@mui/material/Button";
+import { Box, Grid, Stack } from "@mui/material";
 
 export default function Header(props) {
   const { paths, activeContent } = props;
@@ -17,6 +19,7 @@ export default function Header(props) {
       position="static"
       elevation={0}
       sx={{
+        pt: 3,
         marginBottom: 3,
         paddingLeft: 2,
         paddingRight: 2,
@@ -26,40 +29,46 @@ export default function Header(props) {
     >
       <Toolbar
         style={{
-          flexWrap: "wrap",
+          // flexWrap: "wrap",
           padding: 0,
           paddingBottom: 1,
         }}
       >
-        <div style={{ flexGrow: 0 }}>
-          <Link href="/">
-            <img src={bknLogo} alt="" width="200" />
-          </Link>
-        </div>
-        <nav style={{ flexGrow: 1, justifyContent: "center", alignItems: "center", display: "flex" }}>
-          {paths.map((path) => (
-            <Link
-              variant="button"
-              href={path.path}
-              sx={{
-                my: 1,
-                mx: 1.5,
-                textTransform: "none",
-                color: path.pathName === activeContent ? "#003E69" : "#3030303C",
-                textDecoration: "unset",
-                fontFamily: "Syne",
-                fontWeight: path.pathName === activeContent ? "bold" : "normal",
-              }}
-            >
-              {path.pathName}
-            </Link>
-          ))}
-        </nav>
-        <div style={{ flexGrow: 0 }}>
-          <Link href="/">
-            <Button variant="outlined" sx={{ width: 160 }}>Login</Button>
-          </Link>
-        </div>
+        <Container maxWidth="lg">
+          <Grid container justifyContent="space-between" alignItems="center">
+            <Grid item xs={3} md={2}>
+              <Link href="/">
+                <img src={bknLogo} alt="" style={{ maxWidth: "100%" }} />
+              </Link>
+            </Grid>
+            <Grid item xs={6} md={8}>
+              <Grid container justifyContent="center" alignItems="center">
+                {paths.map((path) => (
+                  <Grid item>
+                    <Link
+                      variant="button"
+                      href={path.path}
+                      sx={{
+                        my: 1,
+                        mx: 1.5,
+                        textTransform: "none",
+                        color: path.pathName === activeContent ? "#003E69" : "#3030303C",
+                        textDecoration: "unset",
+                        fontFamily: "Syne",
+                        fontWeight: path.pathName === activeContent ? "bold" : "normal",
+                      }}
+                    >
+                      {path.pathName}
+                    </Link>
+                  </Grid>
+                ))}
+              </Grid>
+            </Grid>
+            <Grid item xs={3} md={2} ml={"auto"}>
+              <Button href="/" variant="outlined" sx={{ maxWidth: "100%", maxHeight: "100%", ml: "auto" }}>Login</Button>
+            </Grid>
+          </Grid>
+        </Container>
       </Toolbar>
     </AppBar>
   );

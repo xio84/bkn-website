@@ -25,13 +25,15 @@ const theme = createTheme({
           style: {
             backgroundColor: "#243a72",
             fontFamily: '"Syne", Helvetica',
-            fontSize: "1rem",
+            fontSize: 16,
             fontWeight: 700,
             lineHeight: "normal",
             borderRadius: 5,
             textTransform: "none",
-            height: '3rem',
+            // height: '3rem',
             // width: '10rem',
+            maxHeight: "100%",
+            maxWidth: "100%",
             },
           },
         {
@@ -39,15 +41,16 @@ const theme = createTheme({
           style: {
             color: '#243a72',
             borderRadius: '0.313rem',
-            height: '3rem',
+            // height: '3rem',
             // width: '10rem',
             fontFamily: '"Syne", Helvetica',
-            fontSize: '1rem',
+            fontSize: 16,
             fontWeight: 700,
             letterSpacing: '-0.03rem',
-            whiteSpace: 'nowrap',
             textTransform: 'none',
-            textDecoration: 'none'
+            textDecoration: 'none',
+            maxHeight: "100%",
+            maxWidth: "100%",
           }
         }
       ]
@@ -61,9 +64,9 @@ const theme = createTheme({
     h1: {
       color: "#243a72",
       fontFamily: "Syne",
-      fontSize: "2.813rem",
+      fontSize: 45,
       fontWeight: 700,
-      lineHeight: "3.438rem",
+      lineHeight: 1.2,
     },
     h2: {
       color : "#003E69",
@@ -90,10 +93,10 @@ const theme = createTheme({
     body1: {
       color: "#303030",
       fontFamily: '"Montserrat", Helvetica',
-      fontSize: "1.125rem",
+      fontSize: 18,
       fontWeight: 400,
       letterSpacing: 0,
-      lineHeight: "2.188rem"
+      lineHeight: 1
     },
     body2: {
       color: "#000000",
@@ -106,7 +109,7 @@ const theme = createTheme({
     subtitle1: {
       color: "#00000080",
       fontFamily: '"Montserrat", Helvetica',
-      fontSize: "1rem",
+      fontSize: 16,
       fontWeight: 400,
       letterSpacing: 0,
       lineHeight: "normal",

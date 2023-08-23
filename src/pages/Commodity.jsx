@@ -88,7 +88,7 @@ function Commodity(props) {
             Home &gt; Collections
           </Typography>
           <Grid container>
-            <Grid item xs={12} lg={6}>
+            <Grid item container xs={12} lg={6} justifyContent={"center"} alignItems={"center"}>
               <img src={coffee} alt="coffee" style={{ maxWidth: "100%", maxHeight: "100%" }} />
             </Grid>
             <Grid item xs={12} lg={6}>
