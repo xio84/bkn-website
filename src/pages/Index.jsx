@@ -25,51 +25,51 @@ import Carousel from "react-material-ui-carousel";
 const data = [
   {
     pic: "Coffee.png",
-    name: "Coffee",
+    name: "Biji Kopi",
     slot: 100,
     price: 100000000,
   },
   {
     pic: "Oil.png",
-    name: "Oil",
+    name: "Minyak Goreng",
     slot: 100,
     price: 100000000,
   },
   {
     pic: "Rice.png",
-    name: "Rice",
+    name: "Gabah",
     slot: 100,
     price: 100000000,
   },
   {
     pic: "Coffee.png",
-    name: "Coffee",
+    name: "Biji Kopi",
     slot: 100,
     price: 100000000,
   },
   {
     pic: "Oil.png",
-    name: "Oil",
+    name: "Minyak Goreng",
     slot: 100,
     price: 100000000,
   },
   {
     pic: "Rice.png",
-    name: "Rice",
+    name: "Gabah",
     slot: 100,
     price: 100000000,
   },
 ];
 
-function createData(name = "", commodity = "", slot = 0, price = 0, date = new Date.now()) {
-  return { name, commodity, slot, price, date };
+function createData(commodity = "", slot = 0, price = 0, date = new Date.now(), coupon = "") {
+  return { commodity, slot, price, date, coupon };
 }
 
 const rows = [
-  createData("Muh. Alkautzar Sanusi", "#Commodity: Rice", 3, 1000000, new Date("2023-07-03")),
-  createData("Muh. Yafi", "#Commodity: Coffe Beans", 10, 3000000, new Date("2023-05-05")),
-  createData("Aga Subagja", "#Commodity: Cooking Oil", 5, 3800000, new Date("2022-11-01")),
-  createData("Oksidian Tafly", "#Commodity: Coffe Beans", 15, 4500000, new Date("2023-05-05")),
+  createData("#Komoditas: Gabah", 3, 1000000, new Date("2023-07-03"), "1 Kupon"),
+  createData("#Komoditas: Biji Kopi", 10, 3000000, new Date("2023-05-05"), "5 Kupon"),
+  createData("#Komoditas: Minyak Goreng", 5, 3800000, new Date("2022-11-01"), "3 Kupon"),
+  createData("#Komoditas: Biji Kopi", 15, 4500000, new Date("2023-05-05"), "2 Kupon"),
 ];
 
 function xGrid(d) {
@@ -95,13 +95,13 @@ function xGrid(d) {
                   borderRadius: 0.5,
                 }}
               >
-                Sale ending
+                Penawaran Segera Berakhir
               </Typography>
             )}
             <CardContent>
               <Grid container>
                 <Grid item xs={6}>
-                  <Typography variant="h3">#Commodity:</Typography>
+                  <Typography variant="h3">#Komoditas:</Typography>
                 </Grid>
                 <Grid item xs={6}>
                   <Typography align="right" variant="subtitle1">
@@ -119,7 +119,7 @@ function xGrid(d) {
               </Grid>
             </CardContent>
             <CardActions sx={{ padding: 2 }}>
-              <Button variant="contained">Learn More</Button>
+              <Button variant="contained">Selengkapnya</Button>
             </CardActions>
             {/* </Stack> */}
           </Card>
@@ -155,11 +155,11 @@ function Home(props) {
                   Komoditas Alami Indonesia, Satu Klik Saja!
                 </Typography>
                 <Typography variant="body1" align="left" paragraph>
-                  KBI presents an innovation in exploring Indonesia's natural potential in the technological dimension in the form of nft.
+                  KBI menghadirkan sebuah inovasi dalam eksplorasi potensi alam Indonesia dengan teknologi nft.
                 </Typography>
                 <Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="left">
-                  <Button variant="contained">Explore More</Button>
-                  <Button variant="outlined">Register Now</Button>
+                  <Button variant="contained">Selengkapnya</Button>
+                  <Button variant="outlined">Daftar Sekarang</Button>
                 </Stack>
               </Container>
             </Grid>
@@ -169,7 +169,7 @@ function Home(props) {
           </Grid>
         </Box>
         <Stack spacing={8}>
-          <Section subtext="Ready to Collect" heading="Latest Collections" />
+          <Section subtext="Stok Tersedia" heading="Komoditas Terbaru" />
           {/* List of collections */}
           <Carousel animation="slide" sx={{ display: { xs: "none", md: "block" } }}>
             {splitByX(data, 3)}
@@ -178,10 +178,8 @@ function Home(props) {
             {splitByX(data, 1)}
           </Carousel>
           {/* End list of collections */}
-          <Section subtext="Commodity Prospect" heading="Latest Commodity Purchase" />
-          <MainTable data={rows} headers={["Name", "Commodity", "Slots Purchased", "Buying Price", "Total Price", "Date"]} />
-          <Section subtext="Commodity Prospect" heading="Latest Commodity Sale" />
-          <MainTable data={rows} headers={["Name", "Commodity", "Slots Sold", "Buying Price", "Total Price", "Date"]} />
+          <Section subtext="Tabel Ikhtisar" heading="Sejarah Pembelian Komoditas" />
+          <MainTable data={rows} headers={["Komoditas", "Jumlah Slot", "Harga Total", "Tanggal Pembelian", "Periode Kontak", "Kupon Terkumpul"]} />
           <Contact />
         </Stack>
       </Container>

@@ -65,7 +65,9 @@ export default function Header(props) {
               </Grid>
             </Grid>
             <Grid item xs={3} md={2} ml={"auto"}>
-              <Button href="/" variant="outlined" sx={{ maxWidth: "100%", maxHeight: "100%", ml: "auto" }}>Login</Button>
+              <Button href="/" variant="outlined" sx={{ maxWidth: "100%", maxHeight: "100%", ml: "auto" }}>
+                Masuk
+              </Button>
             </Grid>
           </Grid>
         </Container>
