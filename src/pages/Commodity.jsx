@@ -24,19 +24,19 @@ import { Divider } from "@mui/material";
 const data = [
   {
     pic: require("../assets/commodities/Coffee.png"),
-    name: "Kopi",
+    name: "Biji Kopi",
     slot: 100,
     price: 100000000,
   },
   {
     pic: require("../assets/commodities/Oil.png"),
-    name: "Minyak",
+    name: "Minyak Goreng",
     slot: 100,
     price: 100000000,
   },
   {
     pic: require("../assets/commodities/Rice.png"),
-    name: "Rice",
+    name: "Gabah",
     slot: 100,
     price: 100000000,
   },
