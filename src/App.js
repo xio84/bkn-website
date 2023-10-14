@@ -20,7 +20,7 @@ import About from "./pages/About";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#243a72",
+      main: "#347E8F",
     },
   },
   components: {
@@ -39,6 +39,7 @@ const theme = createTheme({
             // width: '10rem',
             maxHeight: "100%",
             maxWidth: "100%",
+            backgroundColor: "347E8F",
           },
         },
         {
@@ -55,6 +56,7 @@ const theme = createTheme({
             textDecoration: "none",
             maxHeight: "100%",
             maxWidth: "100%",
+            color: "347E8F",
           },
         },
       ],
