@@ -3,6 +3,7 @@ import Typography from "@mui/material/Typography";
 import { Stack, Container, TextField, Button, Grid } from "@mui/material";
 
 export default function Contact(props) {
+  return null
   return (
     <Container
       maxWidth="false"

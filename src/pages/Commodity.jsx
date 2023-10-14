@@ -132,7 +132,7 @@ function Commodity(props) {
             </Grid>
           </Grid>
           <Section subtext="Tabel Ikhtisar" heading="Sejarah Pembelian Komoditas" />
-          <MainTable data={rows} headers={["Komoditas", "Jumlah Slot", "Harga Total", "Tanggal Pembelian", "Periode Kontak", "Kupon Terkumpul"]} />
+          <MainTable data={rows} headers={["Komoditas", "Jumlah Slot", "Harga Total", "Tanggal Pembelian", "Periode Kontrak", "Kupon Terkumpul"]} />
         </Stack>
       </Container>
       <Footer />

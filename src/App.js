@@ -15,15 +15,21 @@ import Footer from "./components/Footer";
 import './App.css'
 import Commodity from "./pages/Commodity";
 import Error from './pages/404';
+import About from "./pages/About";
 
 const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#243a72"
+    },
+
+  },
   components: {
     MuiButton: {
       variants: [
         {
           props: { variant: 'contained' },
           style: {
-            backgroundColor: "#243a72",
             fontFamily: '"Syne", Helvetica',
             fontSize: 16,
             fontWeight: 700,
@@ -39,7 +45,6 @@ const theme = createTheme({
         {
           props: { variant: 'outlined' },
           style: {
-            color: '#243a72',
             borderRadius: '0.313rem',
             // height: '3rem',
             // width: '10rem',
@@ -119,17 +124,17 @@ const theme = createTheme({
 
 const paths = [
   {
-    "pathName" : "Home",
-    "path" : "/"
-  },{
-    "pathName" : "Collections",
+    "pathName" : "Komoditas",
     "path" : "/commodity"
   },{
-    "pathName" : "About Us",
+    "pathName" : "Tentang Kami",
     "path" : "/about"
   },{
-    "pathName" : "Contact Us",
+    "pathName" : "Kontak Kami",
     "path" : "/contact"
+  },{
+    "pathName" : "FAQ",
+    "path" : "/faq"
   }
 ]
 
@@ -142,6 +147,10 @@ export default function BasicTabs() {
           <Route
             path="/commodity"
             element={<Commodity paths={paths}/>}
+          ></Route>
+          <Route
+            path="/about"
+            element={<About paths={paths}/>}
           ></Route>
           <Route path="*" element={<Error/>}/>
         </Routes>

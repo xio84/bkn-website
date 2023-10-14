@@ -39,13 +39,9 @@ export default function MainTable(props) {
             }}
           >
             <TableCell align="left">
-            <Stack direction={"row"} spacing={1} alignItems={"center"}>
-              <img src={require('../assets/Profile.png')} alt="Profile pic" width={20}>
-              </img>
               <Typography variant="h4">
                 {row.name}
-              </Typography>                
-            </Stack>
+              </Typography>       
             </TableCell>
             <TableCell>
               <Typography variant="subtitle1">

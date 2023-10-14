@@ -28,3 +28,6 @@ tmp
 
 #local deployment files
 *deploy.yaml
+
+# ENV Variables
+.env
