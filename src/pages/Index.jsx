@@ -20,6 +20,7 @@ import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import { Card, CardActions, CardContent, CardHeader, CardMedia, Paper } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
+import { red } from "@mui/material/colors";
 
 // Data seeders
 const data = [
@@ -31,7 +32,7 @@ const data = [
     salestartPeriod: "2023-05-13T17:09:00+07:00",
     saleendPeriod: "2023-08-13T17:09:00+07:00",
     holdstartPeriod: "2023-09-13T17:09:00+07:00",
-    holdendPeriod: "2023-12-13T17:09:00+07:00"
+    holdendPeriod: "2023-12-13T17:09:00+07:00",
   },
   {
     pic: "Oil.png",
@@ -41,7 +42,7 @@ const data = [
     salestartPeriod: "2023-06-13T17:09:00+07:00",
     saleendPeriod: "2023-09-13T17:09:00+07:00",
     holdstartPeriod: "2023-10-13T17:09:00+07:00",
-    holdendPeriod: "2024-01-13T17:09:00+07:00"
+    holdendPeriod: "2024-01-13T17:09:00+07:00",
   },
   {
     pic: "Rice.png",
@@ -50,7 +51,7 @@ const data = [
     salestartPeriod: "2023-07-13T17:09:00+07:00",
     saleendPeriod: "2023-10-13T17:09:00+07:00",
     holdstartPeriod: "2024-05-13T17:09:00+07:00",
-    holdendPeriod: "2024-08-13T17:09:00+07:00"
+    holdendPeriod: "2024-08-13T17:09:00+07:00",
   },
   {
     pic: "Coffee.png",
@@ -59,7 +60,7 @@ const data = [
     salestartPeriod: "2023-08-13T17:09:00+07:00",
     saleendPeriod: "2023-11-13T17:09:00+07:00",
     holdstartPeriod: "2024-05-13T17:09:00+07:00",
-    holdendPeriod: "2024-08-13T17:09:00+07:00"
+    holdendPeriod: "2024-08-13T17:09:00+07:00",
   },
   {
     pic: "Oil.png",
@@ -68,7 +69,7 @@ const data = [
     salestartPeriod: "2023-12-13T17:09:00+07:00",
     saleendPeriod: "2024-08-13T17:09:00+07:00",
     holdstartPeriod: "2024-05-13T17:09:00+07:00",
-    holdendPeriod: "2024-08-13T17:09:00+07:00"
+    holdendPeriod: "2024-08-13T17:09:00+07:00",
   },
   {
     pic: "Rice.png",
@@ -77,7 +78,7 @@ const data = [
     salestartPeriod: "2023-05-13T17:09:00+07:00",
     saleendPeriod: "2023-10-15T17:09:00+07:00",
     holdstartPeriod: "2026-05-13T17:09:00+07:00",
-    holdendPeriod: "2026-08-13T17:09:00+07:00"
+    holdendPeriod: "2026-08-13T17:09:00+07:00",
   },
   {
     pic: "Oil.png",
@@ -86,12 +87,12 @@ const data = [
     salestartPeriod: "2023-05-13T17:09:00+07:00",
     saleendPeriod: "2023-11-15T17:09:00+07:00",
     holdstartPeriod: "2026-05-13T17:09:00+07:00",
-    holdendPeriod: "2026-08-13T17:09:00+07:00"
+    holdendPeriod: "2026-08-13T17:09:00+07:00",
   },
 ];
 
-function createData(commodity = "", slot = 0, price = 0, date = new Date.now(), coupon = "") {
-  return { commodity, slot, price, date, coupon };
+function createData(commodity = "", lot = 0, price = 0, date = new Date.now(), coupon = "") {
+  return { commodity, lot, price, date, coupon };
 }
 
 const rows = [
@@ -105,25 +106,28 @@ function xGrid(d) {
   return (
     <Grid container justifyContent={"flex-start"} alignItems={"stretch"} spacing={1}>
       {d
-      .sort((a, b) => {
-        return Date.parse(a["salestartPeriod"]) - Date.parse(b["salestartPeriod"])
-      })
-      .map((content, index) => {
-        let start = new Date(content["salestartPeriod"])
-        let end = new Date(content["saleendPeriod"])
-        let now = new Date()
-        if (Date.parse(content["saleendPeriod"]) > Date.now()) {
-          let heading = content["slot"] > 5 ? (end > now.setDate(now.getDate() + 3) ? "Siap dibeli!" : "Segera tutup!") : "Segera habis!"
-          return <Grid item xs={6} md={3}>
-            <Card>
-              {/* <Stack spacing={2}> */}
-              {/* TODO: live countdown */}
-              <CardHeader title={heading} 
-              titleTypographyProps={{variant: "h2", align: "center", color: (heading == "Siap dibeli!" ? "green" : "red")}} 
-              subheader={(start.toDateString()) + " ~ " + (end.toDateString())}
-              subheaderTypographyProps={{variant: "subtitle1", align:"center"}}/>
-              <CardMedia component={"img"} src={require(`../assets/commodities/${content.pic}`)} alt={content.name} borderRadius={3} />
-              {/* {index === 0 && (
+        .sort((a, b) => {
+          return Date.parse(a["salestartPeriod"]) - Date.parse(b["salestartPeriod"]);
+        })
+        .map((content, index) => {
+          let start = new Date(content["salestartPeriod"]);
+          let end = new Date(content["saleendPeriod"]);
+          let now = new Date();
+          if (Date.parse(content["saleendPeriod"]) > Date.now()) {
+            let heading = content["slot"] > 5 ? (end > now.setDate(now.getDate() + 3) ? "Siap dibeli!" : "Segera tutup!") : "Segera habis!";
+            return (
+              <Grid item xs={6} md={3}>
+                <Card>
+                  {/* <Stack spacing={2}> */}
+                  {/* TODO: live countdown */}
+                  <CardHeader
+                    title={heading}
+                    titleTypographyProps={{ variant: "h2", align: "center", color: heading == "Siap dibeli!" ? "green" : "red" }}
+                    subheader={start.toDateString() + " ~ " + end.toDateString()}
+                    subheaderTypographyProps={{ variant: "subtitle1", align: "center" }}
+                  />
+                  <CardMedia component={"img"} src={require(`../assets/commodities/${content.pic}`)} alt={content.name} borderRadius={3} />
+                  {/* {index === 0 && (
                 <Typography
                   gutterBottom
                   variant="subtitle1"
@@ -141,39 +145,39 @@ function xGrid(d) {
                   Penawaran Segera Berakhir
                 </Typography>
               )} */}
-              <CardContent>
-                <Grid container>
-                  {/* <Grid item xs={6}>
+                  <CardContent>
+                    <Grid container>
+                      {/* <Grid item xs={6}>
                     <Typography variant="h3">#Komoditas:</Typography>
                   </Grid> */}
-                  <Grid item xs={8}>
-                    <Typography variant="h3" noWrap>
-                      {content.name}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={4}>
-                    <Typography align="right" variant="subtitle1">
-                      {content.slot} Slot
-                    </Typography>
-                  </Grid>
-                  <Grid item paddingTop={4}>
-                    <Typography variant="body2" fontWeight={400}>
-                      Rp. 10.000,-
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </CardContent>
-              <CardActions sx={{ padding: 2 }}>
-                <Button variant="contained">Beli Sekarang</Button>
-              </CardActions>
-              {/* </Stack> */}
-            </Card>
-          </Grid>
-        } else {
-          return undefined
-        }
-        }
-      )}
+                      <Grid item xs={8}>
+                        <Typography variant="h3" noWrap>
+                          {content.name}
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={4}>
+                        <Typography align="right" variant="subtitle1">
+                          {content.slot} Slot
+                        </Typography>
+                      </Grid>
+                      <Grid item paddingTop={4}>
+                        <Typography variant="body2" fontWeight={400}>
+                          Rp. 10.000,-
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  </CardContent>
+                  <CardActions sx={{ padding: 2 }}>
+                    <Button variant="contained">Beli Sekarang</Button>
+                  </CardActions>
+                  {/* </Stack> */}
+                </Card>
+              </Grid>
+            );
+          } else {
+            return undefined;
+          }
+        })}
     </Grid>
   );
 }
@@ -201,14 +205,17 @@ function Home(props) {
             <Grid item md={6}>
               <Container maxWidth="lg">
                 <Typography align="left" textDecoration="unset" variant="h1">
-                  Komoditas Alami Indonesia, Satu Klik Saja!
+                  Bantu Petani
+                </Typography>
+                <Typography align="left" textDecoration="unset" variant="h1">
+                  Bantu Indonesia
                 </Typography>
                 <Typography variant="body1" align="left" paragraph>
                   KBI menghadirkan sebuah inovasi dalam eksplorasi potensi alam Indonesia dengan teknologi nft.
                 </Typography>
                 <Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="left">
-                  <Button variant="contained">Selengkapnya</Button>
-                  <Button variant="outlined">Daftar Sekarang</Button>
+                  <Button variant="outlined">Selengkapnya</Button>
+                  <Button variant="contained">Beli Sekarang</Button>
                 </Stack>
               </Container>
             </Grid>
@@ -218,7 +225,7 @@ function Home(props) {
           </Grid>
         </Box>
         <Stack spacing={8}>
-          <Section subtext="Stok Tersedia" heading="Komoditas Terbaru" />
+          <Section subtext="Stok Tersedia" heading="Komoditas Tersedia" />
           {/* List of collections */}
           {/* Using carousel*/}
           {/* <Carousel animation="slide" sx={{ display: { xs: "none", md: "block" } }}>
@@ -227,12 +234,8 @@ function Home(props) {
           <Carousel animation="slide" sx={{ display: { xs: "block", md: "none" } }}>
             {splitByX(data, 1)}
           </Carousel> */}
-          <Box sx={{display: { xs: "none", md: "block" }}}>
-            {xGrid(data)}
-          </Box>
-          <Box sx={{display: { xs: "block", md: "none" }}}>
-            {xGrid(data)}
-          </Box>
+          <Box sx={{ display: { xs: "none", md: "block" } }}>{xGrid(data)}</Box>
+          <Box sx={{ display: { xs: "block", md: "none" } }}>{xGrid(data)}</Box>
           {/* End list of collections */}
           <Section subtext="Tabel Ikhtisar" heading="Sejarah Pembelian Komoditas" />
           <MainTable data={rows} headers={["Komoditas", "Jumlah Slot", "Harga Total", "Tanggal Pembelian", "Periode Kontrak", "Kupon Terkumpul"]} />

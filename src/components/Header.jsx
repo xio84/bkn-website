@@ -52,7 +52,7 @@ export default function Header(props) {
                         my: 1,
                         mx: 1.5,
                         textTransform: "none",
-                        color: path.pathName === activeContent ? "#003E69" : "#3030303C",
+                        color: path.pathName === activeContent ? "#347E8F" : "#3030303C",
                         textDecoration: "unset",
                         fontFamily: "Syne",
                         fontWeight: path.pathName === activeContent ? "bold" : "normal",
@@ -65,7 +65,7 @@ export default function Header(props) {
               </Grid>
             </Grid>
             <Grid item xs={3} md={2} ml={"auto"}>
-              <Button href="/" variant="outlined" sx={{ maxWidth: "100%", maxHeight: "100%", ml: "auto" }}>
+              <Button href="/" variant="contained" sx={{ maxWidth: "100%", maxHeight: "100%", ml: "auto" }}>
                 Masuk
               </Button>
             </Grid>

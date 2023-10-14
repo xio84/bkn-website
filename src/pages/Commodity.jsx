@@ -42,15 +42,15 @@ const data = [
   },
 ];
 
-function createData(commodity = "", slot = 0, price = 0, date = new Date.now()) {
-  return { commodity, slot, price, date };
+function createData(commodity = "", slot = 0, price = 0, date = new Date.now(), coupon = "") {
+  return { commodity, slot, price, date, coupon };
 }
 
 const rows = [
-  createData("Gabah", 100, 1000000, new Date("2023-05-05")),
-  createData("Minyak Goreng", 100, 1000000, new Date("2023-05-05")),
-  createData("Gabah", 100, 1000000, new Date("2023-05-05")),
-  createData("Biji Kopi", 100, 1000000, new Date("2023-05-05")),
+  createData("Gabah", 100, 1000000, new Date("2023-05-05"), "1 Kupon"),
+  createData("Minyak Goreng", 100, 1000000, new Date("2023-05-05"), "1 Kupon"),
+  createData("Gabah", 100, 1000000, new Date("2023-05-05"), "1 Kupon"),
+  createData("Biji Kopi", 100, 1000000, new Date("2023-05-05"), "1 Kupon"),
 ];
 
 function Commodity(props) {
