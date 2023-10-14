@@ -82,7 +82,7 @@ const theme = createTheme({
       fontWeight: 700,
     },
     h3: {
-      color: "#243a72",
+      color: "#347E8F",
       fontFamily: '"Syne", Helvetica',
       fontSize: 20,
       fontWeight: 700,

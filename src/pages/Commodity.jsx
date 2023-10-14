@@ -60,7 +60,7 @@ function Commodity(props) {
       <Container maxWidth="xl">
         <Stack spacing={8}>
           <Typography variant="subtitle1" align="left">
-            Home &gt; Collections
+            Home &gt; Komoditas
           </Typography>
           <Grid container>
             <Grid item container xs={12} lg={6} justifyContent={"center"} alignItems={"center"}>
@@ -80,7 +80,7 @@ function Commodity(props) {
                     </Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <Typography variant="h2" align="left" color="#003E69" textDecoration="unset" fontFamily="Syne" fontSize={30} fontWeight={700}>
+                    <Typography variant="h2" align="left" color="#347E8F" textDecoration="unset" fontFamily="Syne" fontSize={30} fontWeight={700}>
                       #Komoditas: Gabah
                     </Typography>
                   </Grid>
