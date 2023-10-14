@@ -120,6 +120,14 @@ const theme = createTheme({
       letterSpacing: 0,
       lineHeight: "normal",
     },
+    dateText: {
+      color: "#00000080",
+      fontFamily: '"Montserrat", Helvetica',
+      fontSize: 16,
+      fontWeight: 1000,
+      letterSpacing: 0,
+      lineHeight: "normal",
+    },
   },
 });
 

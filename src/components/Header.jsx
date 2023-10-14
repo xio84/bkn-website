@@ -7,7 +7,7 @@ import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 
 // Assets
-import bknLogo from "../assets/logo.png";
+import bknLogo from "../assets/NewLogo.png";
 import Button from "@mui/material/Button";
 import { Box, Grid, Stack } from "@mui/material";
 

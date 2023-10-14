@@ -9,7 +9,7 @@ import Stack from "@mui/material/Stack";
 // import PropertyList from "../components/marketplace/Property";
 // import HistorySummary from "../../components/surveyor/HistorySummary";
 
-import indo from "../assets/indonesia.png";
+import indo from "../assets/Temp.png";
 import Typography from "@mui/material/Typography";
 
 // Components
@@ -122,9 +122,9 @@ function xGrid(d) {
                   {/* TODO: live countdown */}
                   <CardHeader
                     title={heading}
-                    titleTypographyProps={{ variant: "h2", align: "center", color: heading == "Siap dibeli!" ? "green" : "red" }}
+                    titleTypographyProps={{ variant: "h2", align: "center", color: heading == "Siap dibeli!" ? "#68B92E" : "#C31919" }}
                     subheader={start.toDateString() + " ~ " + end.toDateString()}
-                    subheaderTypographyProps={{ variant: "subtitle1", align: "center" }}
+                    subheaderTypographyProps={{ variant: "dateText", align: "center" }}
                   />
                   <CardMedia component={"img"} src={require(`../assets/commodities/${content.pic}`)} alt={content.name} borderRadius={3} />
                   {/* {index === 0 && (
