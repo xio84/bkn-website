@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useState, useEffect} from "react";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -23,71 +23,72 @@ import Carousel from "react-material-ui-carousel";
 import { red } from "@mui/material/colors";
 
 // Data seeders
+const { ThirdwebSDK } = require("@thirdweb-dev/sdk")
 const data = [
   {
     pic: "Coffee.png",
     name: "Biji Kopi",
     slot: 100,
     price: 100000000,
-    salestartPeriod: "2023-05-13T17:09:00+07:00",
-    saleendPeriod: "2023-08-13T17:09:00+07:00",
-    holdstartPeriod: "2023-09-13T17:09:00+07:00",
-    holdendPeriod: "2023-12-13T17:09:00+07:00",
+    salestart: "2023-05-13T17:09:00+07:00",
+    saleend: "2023-08-13T17:09:00+07:00",
+    holdstart: "2023-09-13T17:09:00+07:00",
+    holdend: "2023-12-13T17:09:00+07:00",
   },
   {
     pic: "Oil.png",
     name: "Minyak Goreng",
     slot: 100,
     price: 100000000,
-    salestartPeriod: "2023-06-13T17:09:00+07:00",
-    saleendPeriod: "2023-09-13T17:09:00+07:00",
-    holdstartPeriod: "2023-10-13T17:09:00+07:00",
-    holdendPeriod: "2024-01-13T17:09:00+07:00",
+    salestart: "2023-06-13T17:09:00+07:00",
+    saleend: "2023-09-13T17:09:00+07:00",
+    holdstart: "2023-10-13T17:09:00+07:00",
+    holdend: "2024-01-13T17:09:00+07:00",
   },
   {
     pic: "Rice.png",
     name: "Gabah",
     slot: 100,
-    salestartPeriod: "2023-07-13T17:09:00+07:00",
-    saleendPeriod: "2023-10-13T17:09:00+07:00",
-    holdstartPeriod: "2024-05-13T17:09:00+07:00",
-    holdendPeriod: "2024-08-13T17:09:00+07:00",
+    salestart: "2023-07-13T17:09:00+07:00",
+    saleend: "2023-10-13T17:09:00+07:00",
+    holdstart: "2024-05-13T17:09:00+07:00",
+    holdend: "2024-08-13T17:09:00+07:00",
   },
   {
     pic: "Coffee.png",
     name: "Biji Kopi",
     slot: 100,
-    salestartPeriod: "2023-08-13T17:09:00+07:00",
-    saleendPeriod: "2023-11-13T17:09:00+07:00",
-    holdstartPeriod: "2024-05-13T17:09:00+07:00",
-    holdendPeriod: "2024-08-13T17:09:00+07:00",
+    salestart: "2023-08-13T17:09:00+07:00",
+    saleend: "2023-11-13T17:09:00+07:00",
+    holdstart: "2024-05-13T17:09:00+07:00",
+    holdend: "2024-08-13T17:09:00+07:00",
   },
   {
     pic: "Oil.png",
     name: "Minyak Goreng",
     slot: 100,
-    salestartPeriod: "2023-12-13T17:09:00+07:00",
-    saleendPeriod: "2024-08-13T17:09:00+07:00",
-    holdstartPeriod: "2024-05-13T17:09:00+07:00",
-    holdendPeriod: "2024-08-13T17:09:00+07:00",
+    salestart: "2023-12-13T17:09:00+07:00",
+    saleend: "2024-08-13T17:09:00+07:00",
+    holdstart: "2024-05-13T17:09:00+07:00",
+    holdend: "2024-08-13T17:09:00+07:00",
   },
   {
     pic: "Rice.png",
     name: "Gabah",
     slot: 100,
-    salestartPeriod: "2023-05-13T17:09:00+07:00",
-    saleendPeriod: "2023-10-15T17:09:00+07:00",
-    holdstartPeriod: "2026-05-13T17:09:00+07:00",
-    holdendPeriod: "2026-08-13T17:09:00+07:00",
+    salestart: "2023-05-13T17:09:00+07:00",
+    saleend: "2023-10-15T17:09:00+07:00",
+    holdstart: "2026-05-13T17:09:00+07:00",
+    holdend: "2026-08-13T17:09:00+07:00",
   },
   {
     pic: "Oil.png",
     name: "Minyak Goreng",
     slot: 1,
-    salestartPeriod: "2023-05-13T17:09:00+07:00",
-    saleendPeriod: "2023-11-15T17:09:00+07:00",
-    holdstartPeriod: "2026-05-13T17:09:00+07:00",
-    holdendPeriod: "2026-08-13T17:09:00+07:00",
+    salestart: "2023-05-13T17:09:00+07:00",
+    saleend: "2023-11-15T17:09:00+07:00",
+    holdstart: "2026-05-13T17:09:00+07:00",
+    holdend: "2026-08-13T17:09:00+07:00",
   },
 ];
 
@@ -107,13 +108,13 @@ function xGrid(d) {
     <Grid container justifyContent={"flex-start"} alignItems={"stretch"} spacing={1}>
       {d
         .sort((a, b) => {
-          return Date.parse(a["salestartPeriod"]) - Date.parse(b["salestartPeriod"]);
+          return Date.parse(a["salestart"]) - Date.parse(b["salestart"]);
         })
         .map((content, index) => {
-          let start = new Date(content["salestartPeriod"]);
-          let end = new Date(content["saleendPeriod"]);
+          let start = content["salestart"] == undefined ? new Date(0) : new Date(content["salestart"]);
+          let end = content["saleend"] == undefined ? new Date(0) : new Date(content["saleend"]);
           let now = new Date();
-          if (Date.parse(content["saleendPeriod"]) > Date.now()) {
+          if (Date.parse(content["saleend"]) > Date.now()) {
             let heading = content["slot"] > 5 ? (end > now.setDate(now.getDate() + 3) ? "Siap dibeli!" : "Segera tutup!") : "Segera habis!";
             return (
               <Grid item xs={6} md={3}>
@@ -126,7 +127,7 @@ function xGrid(d) {
                     subheader={start.toDateString() + " ~ " + end.toDateString()}
                     subheaderTypographyProps={{ variant: "subtitle1", align: "center" }}
                   />
-                  <CardMedia component={"img"} src={require(`../assets/commodities/${content.pic}`)} alt={content.name} borderRadius={3} />
+                  <CardMedia component={"img"} src={content.pic} alt={content.name} />
                   {/* {index === 0 && (
                 <Typography
                   gutterBottom
@@ -190,7 +191,50 @@ function splitByX(d, x) {
   return out;
 }
 
+
 function Home(props) {
+  const [NFTdata, setNFTdata ] = useState([])
+
+  function getData() {
+    const sdk = new ThirdwebSDK("mumbai", {
+      clientId: "8317d98ec5583fc97675484fd1c12807",
+    });
+  
+    sdk.getContract("0xE3E8119bA6131d16D34E72f4024Fd96120858cCd")
+    .then((res) => {
+      console.log("Get contract success");
+      res.erc1155.getOwned("0xC53290Ba22A8E800cCC43B66e517a30B921Ad9D6")
+      .then((dat) => {
+        console.log("Get data success");
+        let newData = []
+        dat.map((val) => {
+          let xdata = {
+            pic: val.metadata.image,
+            name: val.metadata.name,
+            slot: val.quantityOwned ?? 0,
+          }
+          if (val.metadata.attributes != undefined) {
+            val.metadata.attributes.map((val) => {
+              if (val.trait_type != undefined) {
+                xdata[val.trait_type] = val.value
+              }
+            })
+          }
+          newData.push(xdata)
+        })
+        console.log(newData)
+        setNFTdata(newData)
+      })
+      .catch((err) => console.error(err))
+    })
+    .catch((err) => console.error(err))
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+  
+
   return (
     <main>
       <Header {...props} activeContent="Home" />
@@ -234,8 +278,8 @@ function Home(props) {
           <Carousel animation="slide" sx={{ display: { xs: "block", md: "none" } }}>
             {splitByX(data, 1)}
           </Carousel> */}
-          <Box sx={{ display: { xs: "none", md: "block" } }}>{xGrid(data)}</Box>
-          <Box sx={{ display: { xs: "block", md: "none" } }}>{xGrid(data)}</Box>
+          <Box sx={{ display: { xs: "none", md: "block" } }}>{xGrid(NFTdata)}</Box>
+          <Box sx={{ display: { xs: "block", md: "none" } }}>{xGrid(NFTdata)}</Box>
           {/* End list of collections */}
           <Section subtext="Tabel Ikhtisar" heading="Sejarah Pembelian Komoditas" />
           <MainTable data={rows} headers={["Komoditas", "Jumlah Slot", "Harga Total", "Tanggal Pembelian", "Periode Kontrak", "Kupon Terkumpul"]} />
