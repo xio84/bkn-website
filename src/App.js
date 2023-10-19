@@ -16,6 +16,7 @@ import "./App.css";
 import Commodity from "./pages/Commodity";
 import Error from "./pages/404";
 import About from "./pages/About";
+import SignIn from "./pages/SignIn";
 
 const theme = createTheme({
   palette: {
@@ -128,6 +129,38 @@ const theme = createTheme({
       letterSpacing: 0,
       lineHeight: "normal",
     },
+    SignIn: {
+      color: "#61677A",
+      fontFamily: '"Montserrat", Helvetica',
+      fontSize: 25,
+      fontWeight: 1000,
+      letterSpacing: 0,
+      lineHeight: "normal",
+    },
+    SubSignIn: {
+      color: "#B4B4B3",
+      fontFamily: '"Montserrat", Helvetica',
+      fontSize: 15,
+      fontWeight: 1000,
+      letterSpacing: 0,
+      lineHeight: "normal",
+    },
+    Help: {
+      color: "#B4B4B3",
+      fontFamily: '"Montserrat", Helvetica',
+      fontSize: 15,
+      fontWeight: 1000,
+      letterSpacing: 0,
+      lineHeight: "normal",
+    },
+    HelpBold: {
+      color: "#B4B4B3",
+      fontFamily: '"Montserrat", Helvetica',
+      fontSize: 15,
+      fontWeight: 2000,
+      letterSpacing: 0,
+      lineHeight: "normal",
+    },
   },
 });
 
@@ -158,6 +191,7 @@ export default function BasicTabs() {
           <Route path="/" element={<Home paths={paths} />} exact></Route>
           <Route path="/commodity" element={<Commodity paths={paths} />}></Route>
           <Route path="/about" element={<About paths={paths} />}></Route>
+          <Route path="/signin" element={<SignIn paths={paths} />}></Route>
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>
