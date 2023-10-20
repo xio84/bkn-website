@@ -17,6 +17,7 @@ import Commodity from "./pages/Commodity";
 import Error from "./pages/404";
 import About from "./pages/About";
 import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 
 const theme = createTheme({
   palette: {
@@ -140,7 +141,7 @@ const theme = createTheme({
     SubSignIn: {
       color: "#B4B4B3",
       fontFamily: '"Montserrat", Helvetica',
-      fontSize: 15,
+      fontSize: 12,
       fontWeight: 1000,
       letterSpacing: 0,
       lineHeight: "normal",
@@ -148,7 +149,7 @@ const theme = createTheme({
     Help: {
       color: "#B4B4B3",
       fontFamily: '"Montserrat", Helvetica',
-      fontSize: 15,
+      fontSize: 12,
       fontWeight: 1000,
       letterSpacing: 0,
       lineHeight: "normal",
@@ -192,6 +193,7 @@ export default function BasicTabs() {
           <Route path="/commodity" element={<Commodity paths={paths} />}></Route>
           <Route path="/about" element={<About paths={paths} />}></Route>
           <Route path="/signin" element={<SignIn paths={paths} />}></Route>
+          <Route path="/signup" element={<SignUp paths={paths} />}></Route>
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>

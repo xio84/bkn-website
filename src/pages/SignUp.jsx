@@ -21,7 +21,7 @@ import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import { CenterFocusStrong } from "@mui/icons-material";
 
-function SignIn(props) {
+function SignUp(props) {
   return (
     <main>
       <Header {...props} activeContent="SignIn" />
@@ -38,13 +38,13 @@ function SignIn(props) {
             </Grid>
             <Grid item md={6}>
               <Container maxWidth="lg">
-                <Typography align="center" textDecoration="unset" variant="SignIn" marginLeft={12}>
-                  Sign In
+                <Typography align="center" textDecoration="unset" variant="SignIn" marginLeft={10}>
+                  Sign Up
                 </Typography>
               </Container>
               <Container>
-                <Typography align="center" textDecoration="unset" variant="SubSignIn" marginLeft={12}>
-                  Selamat datang silahkan masukkan data Anda.
+                <Typography align="center" textDecoration="unset" variant="SubSignIn" marginLeft={10}>
+                  Daftar sekarang & Notaris dokumen Anda dengan blockchain
                 </Typography>
               </Container>
               <br></br>
@@ -60,23 +60,29 @@ function SignIn(props) {
                     autoComplete="off"
                   >
                     <div>
-                      <TextField id="outlined-username-input" label="Nama" type="text" autoComplete="current-name" />
+                      <TextField id="outlined-username-input" label="Email" type="text" />
                     </div>
                     <div>
-                      <TextField id="outlined-password-input" label="Password" type="password" autoComplete="current-password" />
+                      <TextField id="outlined-password-input" label="Password" type="password" />
+                    </div>
+                    <div>
+                      <TextField id="outlined-confirmpassword-input" label="Konfirmasi Password" type="password" />
+                    </div>
+                    <div>
+                      <TextField id="outlined-phonenumber-input" label="Nomor Telepon" type="text" />
                     </div>
                   </Box>
                 }
-                <Button variant="contained" style={{ height: 45, width: 335, marginTop: 10, marginLeft: 84 }}>
-                  Sign In
+                <Button variant="contained" style={{ height: 45, width: 355, marginTop: 10, marginLeft: 84 }}>
+                  Sign Up
                 </Button>
                 <Grid textAlign={"center"}>
                   <br></br>
 
-                  <Typography variant="HelpBold">Butuh Bantuan? </Typography>
-                  <Typography display={"inline"} variant="Help">
-                    Hubungi Kami.
-                  </Typography>
+                  <Typography variant="HelpBold">Sudah Memiliki Akun? </Typography>
+                  {/* <Typography display={"inline"} variant="Help">
+                    Sign In.
+                  </Typography> */}
                 </Grid>
               </Container>
             </Grid>
@@ -91,4 +97,4 @@ function SignIn(props) {
   );
 }
 
-export default SignIn;
+export default SignUp;
