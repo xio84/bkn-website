@@ -38,17 +38,19 @@ export default function MainTable(props) {
                 <Typography variant="subtitle1">{row.commodity}</Typography>
               </TableCell>
               <TableCell>
-                <Typography variant="subtitle1">{row.slot}</Typography>
+                <Typography variant="subtitle1">{row.lot}</Typography>
               </TableCell>
               <TableCell>
-                <Typography variant="subtitle1">Rp. {row.price.toLocaleString()}</Typography>
-              </TableCell>
-              <TableCell>
-                <Typography variant="subtitle1"> {(row.price * row.slot).toLocaleString()}</Typography>
+                <Typography variant="subtitle1">Rp. {(10000 * row.lot).toLocaleString()}</Typography>
               </TableCell>
               <TableCell align="right">
                 <Typography variant="subtitle1">
-                  <i>{row.date.toDateString()}</i>
+                  <i>{row.startdate.toDateString()}</i>
+                </Typography>
+              </TableCell>
+              <TableCell align="right">
+                <Typography variant="subtitle1">
+                  <i>{row.enddate.toDateString()}</i>
                 </Typography>
               </TableCell>
               <TableCell align="right">

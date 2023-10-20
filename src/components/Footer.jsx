@@ -4,9 +4,12 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { Divider, Grid, Link, Stack } from "@mui/material";
 
-import bigLogo from "../assets/bigLogo.png";
+import bigLogo from "../assets/KPBI.svg";
+import bumnLogo from "../assets/BUMN.svg";
+import isoLogo from "../assets/ISO.svg";
 
 const items = ["Home", "About", "Privacy"]
+const imgs = [require('../assets/BUMN.svg'), require('../assets/ISO.svg')]
 
 function Copyright() {
   return (
@@ -49,7 +52,7 @@ export default function StickyFooter() {
           </Grid>
           <Grid item lg={"auto"} xs={12} marginLeft={"auto"}>
             <Stack direction={"row"}>
-              {items.map((item) => (
+              {/* {items.map((item) => (
                 <Link
                   variant="button"
                   href="/"
@@ -65,7 +68,14 @@ export default function StickyFooter() {
                 >
                   {item}
                 </Link>
-              ))}
+              ))} */}
+              <img src={bumnLogo} alt="img"/>
+              <img src={isoLogo} alt="img"/>
+              {/* {
+                imgs.map((image) => {
+                  <img src={image} alt="image"/>
+                })
+              } */}
             </Stack>
           </Grid>
           <Grid item xs={12}>

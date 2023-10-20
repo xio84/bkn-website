@@ -1,28 +1,14 @@
 import React from 'react';
-import { Box, Button, Typography } from '@mui/material';
-import { purple } from '@mui/material/colors';
+import { TknAbout } from './about/TknAbout';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
-const primary = purple[500]; // #f44336
-
-export default function About() {
+export default function About(props) {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column',
-        minHeight: '100vh',
-        backgroundColor: primary,
-      }}
-    >
-      <Typography variant="h1" style={{ color: 'white' }}>
-        404
-      </Typography>
-      <Typography variant="h6" style={{ color: 'white' }}>
-        About page is still WIP
-      </Typography>
-      <Button href='/' variant="contained">Back Home</Button>
-    </Box>
+    <div>
+      <Header {...props} activeContent="Tentang Kami"></Header>
+      <TknAbout/>
+      <Footer></Footer>
+    </div>
   );
 }

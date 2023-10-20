@@ -9,7 +9,7 @@ import Stack from "@mui/material/Stack";
 // import PropertyList from "../components/marketplace/Property";
 // import HistorySummary from "../../components/surveyor/HistorySummary";
 
-import indo from "../assets/indonesia.png";
+import indo from "../assets/Temp.png";
 import Typography from "@mui/material/Typography";
 
 // Components
@@ -21,86 +21,23 @@ import Footer from "../components/Footer";
 import { Card, CardActions, CardContent, CardHeader, CardMedia, Paper } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import { red } from "@mui/material/colors";
+import { getData, getTx } from "../service/web3";
 
 // Data seeders
 const { ThirdwebSDK } = require("@thirdweb-dev/sdk")
-const data = [
-  {
-    pic: "Coffee.png",
-    name: "Biji Kopi",
-    slot: 100,
-    price: 100000000,
-    salestart: "2023-05-13T17:09:00+07:00",
-    saleend: "2023-08-13T17:09:00+07:00",
-    holdstart: "2023-09-13T17:09:00+07:00",
-    holdend: "2023-12-13T17:09:00+07:00",
-  },
-  {
-    pic: "Oil.png",
-    name: "Minyak Goreng",
-    slot: 100,
-    price: 100000000,
-    salestart: "2023-06-13T17:09:00+07:00",
-    saleend: "2023-09-13T17:09:00+07:00",
-    holdstart: "2023-10-13T17:09:00+07:00",
-    holdend: "2024-01-13T17:09:00+07:00",
-  },
-  {
-    pic: "Rice.png",
-    name: "Gabah",
-    slot: 100,
-    salestart: "2023-07-13T17:09:00+07:00",
-    saleend: "2023-10-13T17:09:00+07:00",
-    holdstart: "2024-05-13T17:09:00+07:00",
-    holdend: "2024-08-13T17:09:00+07:00",
-  },
-  {
-    pic: "Coffee.png",
-    name: "Biji Kopi",
-    slot: 100,
-    salestart: "2023-08-13T17:09:00+07:00",
-    saleend: "2023-11-13T17:09:00+07:00",
-    holdstart: "2024-05-13T17:09:00+07:00",
-    holdend: "2024-08-13T17:09:00+07:00",
-  },
-  {
-    pic: "Oil.png",
-    name: "Minyak Goreng",
-    slot: 100,
-    salestart: "2023-12-13T17:09:00+07:00",
-    saleend: "2024-08-13T17:09:00+07:00",
-    holdstart: "2024-05-13T17:09:00+07:00",
-    holdend: "2024-08-13T17:09:00+07:00",
-  },
-  {
-    pic: "Rice.png",
-    name: "Gabah",
-    slot: 100,
-    salestart: "2023-05-13T17:09:00+07:00",
-    saleend: "2023-10-15T17:09:00+07:00",
-    holdstart: "2026-05-13T17:09:00+07:00",
-    holdend: "2026-08-13T17:09:00+07:00",
-  },
-  {
-    pic: "Oil.png",
-    name: "Minyak Goreng",
-    slot: 1,
-    salestart: "2023-05-13T17:09:00+07:00",
-    saleend: "2023-11-15T17:09:00+07:00",
-    holdstart: "2026-05-13T17:09:00+07:00",
-    holdend: "2026-08-13T17:09:00+07:00",
-  },
-];
+const sdk = new ThirdwebSDK("mumbai", {
+  clientId: "8317d98ec5583fc97675484fd1c12807",
+});
 
-function createData(commodity = "", lot = 0, price = 0, date = new Date.now(), coupon = "") {
-  return { commodity, lot, price, date, coupon };
+function createData(commodity = "", lot = 0, price = 0, startdate = new Date.now(), enddate = new Date.now(), coupon = "") {
+  return { commodity, lot, price, startdate, enddate, coupon };
 }
 
 const rows = [
-  createData("#Komoditas: Gabah", 3, 1000000, new Date("2023-07-03"), "1 Kupon"),
-  createData("#Komoditas: Biji Kopi", 10, 3000000, new Date("2023-05-05"), "5 Kupon"),
-  createData("#Komoditas: Minyak Goreng", 5, 3800000, new Date("2022-11-01"), "3 Kupon"),
-  createData("#Komoditas: Biji Kopi", 15, 4500000, new Date("2023-05-05"), "2 Kupon"),
+  createData("#Komoditas: Gabah", 3, 1000000, new Date("2023-07-03"), new Date("2023-07-09"), "1 Kupon"),
+  createData("#Komoditas: Biji Kopi", 10, 3000000, new Date("2023-05-05"), new Date("2023-07-03"), "5 Kupon"),
+  createData("#Komoditas: Minyak Goreng", 5, 3800000, new Date("2022-11-01"), new Date("2023-07-03"), "3 Kupon"),
+  createData("#Komoditas: Biji Kopi", 15, 4500000, new Date("2023-05-05"), new Date("2023-07-03"), "2 Kupon"),
 ];
 
 function xGrid(d) {
@@ -128,24 +65,6 @@ function xGrid(d) {
                     subheaderTypographyProps={{ variant: "subtitle1", align: "center" }}
                   />
                   <CardMedia component={"img"} src={content.pic} alt={content.name} />
-                  {/* {index === 0 && (
-                <Typography
-                  gutterBottom
-                  variant="subtitle1"
-                  sx={{
-                    position: "absolute",
-                    top: "0",
-                    marginTop: 1,
-                    marginLeft: 2,
-                    padding: 0.5,
-                    textAlign: "left",
-                    backgroundColor: "yellow",
-                    borderRadius: 0.5,
-                  }}
-                >
-                  Penawaran Segera Berakhir
-                </Typography>
-              )} */}
                   <CardContent>
                     <Grid container>
                       {/* <Grid item xs={6}>
@@ -194,44 +113,11 @@ function splitByX(d, x) {
 
 function Home(props) {
   const [NFTdata, setNFTdata ] = useState([])
-
-  function getData() {
-    const sdk = new ThirdwebSDK("mumbai", {
-      clientId: "8317d98ec5583fc97675484fd1c12807",
-    });
-  
-    sdk.getContract("0xE3E8119bA6131d16D34E72f4024Fd96120858cCd")
-    .then((res) => {
-      console.log("Get contract success");
-      res.erc1155.getOwned("0xC53290Ba22A8E800cCC43B66e517a30B921Ad9D6")
-      .then((dat) => {
-        console.log("Get data success");
-        let newData = []
-        dat.map((val) => {
-          let xdata = {
-            pic: val.metadata.image,
-            name: val.metadata.name,
-            slot: val.quantityOwned ?? 0,
-          }
-          if (val.metadata.attributes != undefined) {
-            val.metadata.attributes.map((val) => {
-              if (val.trait_type != undefined) {
-                xdata[val.trait_type] = val.value
-              }
-            })
-          }
-          newData.push(xdata)
-        })
-        console.log(newData)
-        setNFTdata(newData)
-      })
-      .catch((err) => console.error(err))
-    })
-    .catch((err) => console.error(err))
-  }
+  const [TXdata, setTXdata ] = useState([])
 
   useEffect(() => {
-    getData()
+    getData(setNFTdata)
+    getTx(setTXdata)
   }, [])
   
 
@@ -282,7 +168,7 @@ function Home(props) {
           <Box sx={{ display: { xs: "block", md: "none" } }}>{xGrid(NFTdata)}</Box>
           {/* End list of collections */}
           <Section subtext="Tabel Ikhtisar" heading="Sejarah Pembelian Komoditas" />
-          <MainTable data={rows} headers={["Komoditas", "Jumlah Slot", "Harga Total", "Tanggal Pembelian", "Periode Kontrak", "Kupon Terkumpul"]} />
+          <MainTable data={rows} headers={["Komoditas", "Jumlah Lot", "Harga Total", "Tanggal Mulai Kontrak", "Tanggal Selesai Kontrak", "Kupon Terkumpul"]} />
           <Contact />
         </Stack>
       </Container>

@@ -3,7 +3,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Marketplace
-import Home from "./pages/Index";
+import Home from "./pages/Home";
 // import MarketplaceDetail from "./pages/marketplace/Detail";
 // import MarketplaceAuction from "../tmp/Auction";
 // import MarketplaceAuctionDetail from "./pages/marketplace/AuctionDetail";
@@ -16,6 +16,9 @@ import "./App.css";
 import Commodity from "./pages/Commodity";
 import Error from "./pages/404";
 import About from "./pages/About";
+import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
+import FAQ from "./pages/Faq";
 
 const theme = createTheme({
   palette: {
@@ -125,10 +128,6 @@ const theme = createTheme({
 
 const paths = [
   {
-    pathName: "Komoditas",
-    path: "/commodity",
-  },
-  {
     pathName: "Tentang Kami",
     path: "/about",
   },
@@ -137,9 +136,9 @@ const paths = [
     path: "/contact",
   },
   {
-    pathName: "FAQ",
+    pathName: "Pertanyaan Umum",
     path: "/faq",
-  },
+  }
 ];
 
 export default function BasicTabs() {
@@ -150,6 +149,9 @@ export default function BasicTabs() {
           <Route path="/" element={<Home paths={paths} />} exact></Route>
           <Route path="/commodity" element={<Commodity paths={paths} />}></Route>
           <Route path="/about" element={<About paths={paths} />}></Route>
+          <Route path="/signin" element={<SignUp paths={paths} />}></Route>
+          <Route path="/login" element={<Login paths={paths} />}></Route>
+          <Route path="/faq" element={<FAQ paths={paths} />}></Route>
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>

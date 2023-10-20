@@ -7,7 +7,7 @@ import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 
 // Assets
-import bknLogo from "../assets/logo.png";
+import bknLogo from "../assets/Home.svg";
 import Button from "@mui/material/Button";
 import { Box, Grid, Stack } from "@mui/material";
 
@@ -65,7 +65,7 @@ export default function Header(props) {
               </Grid>
             </Grid>
             <Grid item xs={3} md={2} ml={"auto"}>
-              <Button href="/" variant="contained" sx={{ maxWidth: "100%", maxHeight: "100%", ml: "auto" }}>
+              <Button href="/login" variant="contained" sx={{ maxWidth: "100%", maxHeight: "100%", ml: "auto" }}>
                 Masuk
               </Button>
             </Grid>
