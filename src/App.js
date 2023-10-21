@@ -149,7 +149,7 @@ const theme = createTheme({
     Help: {
       color: "#B4B4B3",
       fontFamily: '"Montserrat", Helvetica',
-      fontSize: 12,
+      fontSize: 15,
       fontWeight: 1000,
       letterSpacing: 0,
       lineHeight: "normal",

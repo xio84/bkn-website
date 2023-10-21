@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Components
 // import PropertyList from "../components/marketplace/Property";
@@ -14,7 +15,7 @@ import indo from "../assets/Temp.png";
 import Typography from "@mui/material/Typography";
 
 // Components
-import Header from "../components/Header";
+import Header from "../components/Header(sub)";
 import Section from "../components/Section";
 import MainTable from "../components/Table";
 import Contact from "../components/Contact";
@@ -38,12 +39,12 @@ function SignIn(props) {
             </Grid>
             <Grid item md={6}>
               <Container maxWidth="lg">
-                <Typography align="center" textDecoration="unset" variant="SignIn" marginLeft={12}>
-                  Sign In
+                <Typography align="center" textDecoration="unset" variant="SignIn" marginLeft={10}>
+                  Masuk
                 </Typography>
               </Container>
               <Container>
-                <Typography align="center" textDecoration="unset" variant="SubSignIn" marginLeft={12}>
+                <Typography align="center" textDecoration="unset" variant="SubSignIn" marginLeft={10}>
                   Selamat datang silahkan masukkan data Anda.
                 </Typography>
               </Container>
@@ -63,20 +64,23 @@ function SignIn(props) {
                       <TextField id="outlined-username-input" label="Nama" type="text" autoComplete="current-name" />
                     </div>
                     <div>
-                      <TextField id="outlined-password-input" label="Password" type="password" autoComplete="current-password" />
+                      <TextField id="outlined-password-input" label="Kata Sandi" type="password" autoComplete="current-password" />
                     </div>
                   </Box>
                 }
-                <Button variant="contained" style={{ height: 45, width: 335, marginTop: 10, marginLeft: 84 }}>
-                  Sign In
+                <Button variant="contained" style={{ height: 45, width: 335, marginTop: 10, marginLeft: 93 }}>
+                  Masuk
                 </Button>
                 <Grid textAlign={"center"}>
                   <br></br>
 
-                  <Typography variant="HelpBold">Butuh Bantuan? </Typography>
-                  <Typography display={"inline"} variant="Help">
-                    Hubungi Kami.
-                  </Typography>
+                  <Typography variant="HelpBold">Belum Memiliki Akun? </Typography>
+                  {/* <Typography display={"inline"} variant="Help">
+                    Buat Akun.
+                  </Typography> */}
+                  <a href="/signup" variant="HelpBold">
+                    Buat Akun.
+                  </a>
                 </Grid>
               </Container>
             </Grid>

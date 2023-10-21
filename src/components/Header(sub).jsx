@@ -35,40 +35,17 @@ export default function Header(props) {
         }}
       >
         <Container maxWidth="lg">
-          <Grid container justifyContent="space-between" alignItems="center">
+          <Grid container justifyContent="space-between" alignItems="center" marginLeft={60}>
             <Grid item xs={3} md={2}>
               <Link href="/">
                 <img src={bknLogo} alt="" style={{ maxWidth: "100%" }} />
               </Link>
             </Grid>
-            <Grid item xs={6} md={8}>
-              <Grid container justifyContent="center" alignItems="center">
-                {paths.map((path) => (
-                  <Grid item>
-                    <Link
-                      variant="button"
-                      href={path.path}
-                      sx={{
-                        my: 1,
-                        mx: 1.5,
-                        textTransform: "none",
-                        color: path.pathName === activeContent ? "#347E8F" : "#3030303C",
-                        textDecoration: "unset",
-                        fontFamily: "Syne",
-                        fontWeight: path.pathName === activeContent ? "bold" : "normal",
-                      }}
-                    >
-                      {path.pathName}
-                    </Link>
-                  </Grid>
-                ))}
-              </Grid>
-            </Grid>
-            <Grid item xs={3} md={2} ml={"auto"}>
-              <Button href="/signin" variant="contained" sx={{ maxWidth: "100%", maxHeight: "100%", ml: "auto" }}>
+            {/* <Grid item xs={3} md={2} ml={"auto"}>
+              <Button href="" variant="contained" sx={{ maxWidth: "100%", maxHeight: "100%", ml: "auto" }}>
                 Masuk
               </Button>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Container>
       </Toolbar>

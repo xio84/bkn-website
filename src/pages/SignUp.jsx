@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Components
 // import PropertyList from "../components/marketplace/Property";
@@ -14,7 +15,7 @@ import indo from "../assets/Temp.png";
 import Typography from "@mui/material/Typography";
 
 // Components
-import Header from "../components/Header";
+import Header from "../components/Header(sub)";
 import Section from "../components/Section";
 import MainTable from "../components/Table";
 import Contact from "../components/Contact";
@@ -39,7 +40,7 @@ function SignUp(props) {
             <Grid item md={6}>
               <Container maxWidth="lg">
                 <Typography align="center" textDecoration="unset" variant="SignIn" marginLeft={10}>
-                  Sign Up
+                  Buat Akun
                 </Typography>
               </Container>
               <Container>
@@ -63,10 +64,10 @@ function SignUp(props) {
                       <TextField id="outlined-username-input" label="Email" type="text" />
                     </div>
                     <div>
-                      <TextField id="outlined-password-input" label="Password" type="password" />
+                      <TextField id="outlined-password-input" label="Kata Sandi" type="password" />
                     </div>
                     <div>
-                      <TextField id="outlined-confirmpassword-input" label="Konfirmasi Password" type="password" />
+                      <TextField id="outlined-confirmpassword-input" label="Konfirmasi Kata Sandi" type="password" />
                     </div>
                     <div>
                       <TextField id="outlined-phonenumber-input" label="Nomor Telepon" type="text" />
@@ -74,7 +75,7 @@ function SignUp(props) {
                   </Box>
                 }
                 <Button variant="contained" style={{ height: 45, width: 355, marginTop: 10, marginLeft: 84 }}>
-                  Sign Up
+                  Buat Akun Baru
                 </Button>
                 <Grid textAlign={"center"}>
                   <br></br>
@@ -83,6 +84,9 @@ function SignUp(props) {
                   {/* <Typography display={"inline"} variant="Help">
                     Sign In.
                   </Typography> */}
+                  <a href="/signin" variant="HelpBold">
+                    Masuk.
+                  </a>
                 </Grid>
               </Container>
             </Grid>
