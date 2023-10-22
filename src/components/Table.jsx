@@ -1,6 +1,6 @@
 import * as React from "react";
 import Typography from "@mui/material/Typography";
-import { Table, TableContainer, TableHead, TableRow, TableBody, TableCell, Stack } from "@mui/material";
+import { Table, TableContainer, TableHead, TableRow, TableBody, TableCell, Stack, Button } from "@mui/material";
 
 export default function MainTable(props) {
   const { headers, data } = props;
@@ -29,34 +29,63 @@ export default function MainTable(props) {
         <TableBody>
           {data.map((row) => (
             <TableRow
-              key={row.name}
+              key={row[0]}
               sx={{
                 "&:last-child td, &:last-child th": { border: 0 },
               }}
             >
+              {row.map((col) => (
+                <TableCell>
+                  <Typography variant="subtitle1">{col}</Typography>
+                </TableCell>
+
+              ))}
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+}
+
+export function TableWithAction(props) {
+  const { headers, data, actions } = props;
+  return (
+    <TableContainer sx={{ backgroundColor: "white" }}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead sx={{ fontFamily: "Syne", fontWeight: 400 }}>
+          <TableRow>
+            {headers.map((header, index) => {
+                return (
+                  <TableCell>
+                    <Typography variant="h4">{header}</Typography>
+                  </TableCell>
+                );
+              })}
+            <TableCell>
+              <Typography variant="h4">Aksi</Typography>
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {data.map((row) => (
+            <TableRow
+              key={row[0]}
+              sx={{
+                "&:last-child td, &:last-child th": { border: 0 },
+              }}
+            >
+              {row.map((col) => (
+                <TableCell>
+                  <Typography variant="subtitle1">{col}</Typography>
+                </TableCell>
+              ))}
               <TableCell>
-                <Typography variant="subtitle1">{row.commodity}</Typography>
-              </TableCell>
-              <TableCell>
-                <Typography variant="subtitle1">{row.lot}</Typography>
-              </TableCell>
-              <TableCell>
-                <Typography variant="subtitle1">Rp. {(10000 * row.lot).toLocaleString()}</Typography>
-              </TableCell>
-              <TableCell align="right">
-                <Typography variant="subtitle1">
-                  <i>{row.startdate.toDateString()}</i>
-                </Typography>
-              </TableCell>
-              <TableCell align="right">
-                <Typography variant="subtitle1">
-                  <i>{row.enddate.toDateString()}</i>
-                </Typography>
-              </TableCell>
-              <TableCell align="right">
-                <Typography variant="subtitle1">
-                  <i>{row.coupon}</i>
-                </Typography>
+                {actions.map((col) => (
+                  <Button>
+                    {col}
+                  </Button>
+                ))}
               </TableCell>
             </TableRow>
           ))}

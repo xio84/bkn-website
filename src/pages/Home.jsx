@@ -22,6 +22,7 @@ import { Card, CardActions, CardContent, CardHeader, CardMedia, Paper } from "@m
 import Carousel from "react-material-ui-carousel";
 import { red } from "@mui/material/colors";
 import { getData, getTx } from "../service/web3";
+import { getProfile } from "../service/account";
 
 // Data seeders
 const { ThirdwebSDK } = require("@thirdweb-dev/sdk")
@@ -30,14 +31,14 @@ const sdk = new ThirdwebSDK("mumbai", {
 });
 
 function createData(commodity = "", lot = 0, price = 0, startdate = new Date.now(), enddate = new Date.now(), coupon = "") {
-  return { commodity, lot, price, startdate, enddate, coupon };
+  return [ commodity, lot, price, startdate, enddate, coupon ];
 }
 
 const rows = [
-  createData("#Komoditas: Gabah", 3, 1000000, new Date("2023-07-03"), new Date("2023-07-09"), "1 Kupon"),
-  createData("#Komoditas: Biji Kopi", 10, 3000000, new Date("2023-05-05"), new Date("2023-07-03"), "5 Kupon"),
-  createData("#Komoditas: Minyak Goreng", 5, 3800000, new Date("2022-11-01"), new Date("2023-07-03"), "3 Kupon"),
-  createData("#Komoditas: Biji Kopi", 15, 4500000, new Date("2023-05-05"), new Date("2023-07-03"), "2 Kupon"),
+  createData("Gabah", 3, 1000000, new Date("2023-07-03").toLocaleDateString(), new Date("2023-07-09").toLocaleDateString(), new Date(new Date() - new Date("2023-07-03")).getMonth() +" Kupon"),
+  createData("Gabah", 10, 3000000, new Date("2023-05-05").toLocaleDateString(), new Date("2023-07-03").toLocaleDateString(), new Date(new Date() - new Date("2023-05-05")).getMonth() +" Kupon"),
+  createData("Beras", 5, 3800000, new Date("2022-11-01").toLocaleDateString(), new Date("2023-07-03").toLocaleDateString(), new Date(new Date() - new Date("2022-11-01")).getMonth() +" Kupon"),
+  createData("Beras", 15, 4500000, new Date("2023-05-05").toLocaleDateString(), new Date("2023-07-03").toLocaleDateString(), new Date(new Date() - new Date("2023-05-05")).getMonth() +" Kupon"),
 ];
 
 function xGrid(d) {
@@ -77,7 +78,7 @@ function xGrid(d) {
                       </Grid>
                       <Grid item xs={4}>
                         <Typography align="right" variant="subtitle1">
-                          {content.slot} Slot
+                          {content.slot} Lot
                         </Typography>
                       </Grid>
                       <Grid item paddingTop={4}>
@@ -88,7 +89,7 @@ function xGrid(d) {
                     </Grid>
                   </CardContent>
                   <CardActions sx={{ padding: 2 }}>
-                    <Button variant="contained">Beli Sekarang</Button>
+                    <Button variant="contained" href={("/commodity/" + content.id)}>Beli Sekarang</Button>
                   </CardActions>
                   {/* </Stack> */}
                 </Card>
@@ -114,16 +115,34 @@ function splitByX(d, x) {
 function Home(props) {
   const [NFTdata, setNFTdata ] = useState([])
   const [TXdata, setTXdata ] = useState([])
+  const [profile, setprofile ] = useState("")
 
   useEffect(() => {
     getData(setNFTdata)
     getTx(setTXdata)
+
+    let auth = window.sessionStorage.getItem("auth")
+    console.log("Stored session:");
+    console.log(auth);
+    if (auth) {
+      getProfile(auth)
+      .then((res) => {
+        if (res.status == 200) {
+          setprofile(res.data["data"])
+        } else {
+          window.sessionStorage.removeItem("auth")
+        }
+      })
+      .catch(() => {
+        window.sessionStorage.removeItem("auth")
+      })
+    }
   }, [])
   
 
   return (
     <main>
-      <Header {...props} activeContent="Home" />
+      <Header {...props} activeContent="Home" profile={profile} />
       <Container maxWidth="lg">
         <Box
           sx={{
@@ -144,8 +163,13 @@ function Home(props) {
                   KBI menghadirkan sebuah inovasi dalam eksplorasi potensi alam Indonesia dengan teknologi nft.
                 </Typography>
                 <Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="left">
-                  <Button variant="outlined">Selengkapnya</Button>
-                  <Button variant="contained">Beli Sekarang</Button>
+                  <Button variant="outlined" href="/about">Selengkapnya</Button>
+                  {
+                    profile == "" || profile == undefined ?
+                    <Button variant="contained" href="/signup">Beli Sekarang</Button>
+                    :
+                    <Button variant="contained" href="/profile">Cek Kupon</Button>
+                  }
                 </Stack>
               </Container>
             </Grid>

@@ -106,6 +106,7 @@ export default function Login(props) {
         elevation={1}
         square
       >
+      <Link href="/">Kembali ke halaman utama</Link>
         <Box sx={{
     margin: [2, 6],
     display: "flex",

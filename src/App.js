@@ -19,6 +19,7 @@ import About from "./pages/About";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import FAQ from "./pages/Faq";
+import Profile from "./pages/Profile";
 
 const theme = createTheme({
   palette: {
@@ -147,11 +148,12 @@ export default function BasicTabs() {
       <Router>
         <Routes>
           <Route path="/" element={<Home paths={paths} />} exact></Route>
-          <Route path="/commodity" element={<Commodity paths={paths} />}></Route>
+          <Route path="/commodity/:id" element={<Commodity paths={paths} />}></Route>
           <Route path="/about" element={<About paths={paths} />}></Route>
-          <Route path="/signin" element={<SignUp paths={paths} />}></Route>
+          <Route path="/signup" element={<SignUp paths={paths} />}></Route>
           <Route path="/login" element={<Login paths={paths} />}></Route>
           <Route path="/faq" element={<FAQ paths={paths} />}></Route>
+          <Route path="/profile" element={<Profile paths={paths} />}></Route>
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>

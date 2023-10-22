@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useState, useEffect} from "react";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -19,44 +19,44 @@ import MainTable from "../components/Table";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import { Divider } from "@mui/material";
-
-// Data seeders
-const data = [
-  {
-    pic: require("../assets/commodities/Coffee.png"),
-    name: "Biji Kopi",
-    slot: 100,
-    price: 100000000,
-  },
-  {
-    pic: require("../assets/commodities/Oil.png"),
-    name: "Minyak Goreng",
-    slot: 100,
-    price: 100000000,
-  },
-  {
-    pic: require("../assets/commodities/Rice.png"),
-    name: "Gabah",
-    slot: 100,
-    price: 100000000,
-  },
-];
-
-function createData(commodity = "", slot = 0, price = 0, date = new Date.now(), coupon = "") {
-  return { commodity, slot, price, date, coupon };
-}
-
-const rows = [
-  createData("Gabah", 100, 1000000, new Date("2023-05-05"), "1 Kupon"),
-  createData("Minyak Goreng", 100, 1000000, new Date("2023-05-05"), "1 Kupon"),
-  createData("Gabah", 100, 1000000, new Date("2023-05-05"), "1 Kupon"),
-  createData("Biji Kopi", 100, 1000000, new Date("2023-05-05"), "1 Kupon"),
-];
+import { getNFT } from "../service/web3";
+import { useParams } from "react-router-dom";
+import { getProfile } from "../service/account";
 
 function Commodity(props) {
+  const { id } = useParams()
+  const [profile, setprofile ] = useState("")
+  const [NFTsingular, setNFTsingular ] = useState({
+    id: undefined,
+    description: undefined,
+          pic: undefined,
+          name: undefined,
+          lot: -1,
+  })
+
+
+  useEffect(() => {
+    getNFT(id, setNFTsingular)
+
+    let auth = window.sessionStorage.getItem("auth")
+    console.log("Stored session:");
+    console.log(auth);
+    if (auth) {
+      getProfile(auth)
+      .then((res) => {
+        if (res.status == 200) {
+          setprofile(res.data["data"])
+        }
+      })
+      .catch(() => {
+        window.sessionStorage.removeItem("auth")
+      })
+    }
+  }, [])
+
   return (
     <main>
-      <Header {...props} activeContent="Collections" />
+      <Header {...props} activeContent="Collections" profile={profile} />
       <Container maxWidth="xl">
         <Stack spacing={8}>
           <Typography variant="subtitle1" align="left">
@@ -64,7 +64,7 @@ function Commodity(props) {
           </Typography>
           <Grid container>
             <Grid item container xs={12} lg={6} justifyContent={"center"} alignItems={"center"}>
-              <img src={coffee} alt="coffee" style={{ maxWidth: "100%", maxHeight: "100%" }} />
+              <Box component="img" src={NFTsingular.pic} alt="NFTpic" sx={{height: 400, width: 600}} />
             </Grid>
             <Grid item xs={12} lg={6}>
               <Stack spacing={8}>
@@ -80,19 +80,19 @@ function Commodity(props) {
                     </Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <Typography variant="h2" align="left" color="#003E69" textDecoration="unset" fontFamily="Syne" fontSize={30} fontWeight={700}>
-                      #Komoditas: Gabah
+                    <Typography variant="h2">
+                      {NFTsingular.name}
                     </Typography>
                   </Grid>
                   <Grid item xs={6}>
                     <Typography variant="body" align="right" color="grey" textDecoration="unset" fontFamily="Montserrat" marginBottom={0} paragraph>
-                      08 Juli 2023
+                      {NFTsingular["saleend"] == undefined ? new Date(Date.now()).toLocaleDateString() : new Date(NFTsingular["saleend"]).toLocaleDateString()}
                     </Typography>
                   </Grid>
                 </Grid>
                 <Stack spacing={2}>
                   <Typography variant="subtitle1">Deskripsi</Typography>
-                  <Typography variant="subtitle1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis lorem et velit egestas blandit in sed enim. Nam a leo ac enim lacinia lobortis.</Typography>
+                  <Typography variant="subtitle1">{NFTsingular.description}</Typography>
                 </Stack>
                 <Grid container rowSpacing={2} justifyContent={"space-evenly"} mt={"auto"}>
                   <Grid item xs={6}>
@@ -103,12 +103,12 @@ function Commodity(props) {
                   </Grid>
                   <Grid item xs={6}>
                     <Typography variant="h3" fontFamily={"Montserrat"} fontWeight={700} letterSpacing={-0.03} fontSize={15}>
-                      100 Slot
+                      {NFTsingular.lot} Lot
                     </Typography>
                   </Grid>
                   <Grid item xs={6}>
                     <Typography display={"inline"} variant="h3" fontFamily={"Montserrat"} fontWeight={700} letterSpacing={-0.03} fontSize={15}>
-                      Rp. 100.000.000,-
+                      Rp. 10.000,-
                     </Typography>
                     <Typography display={"inline"} variant="subtitle1">
                       /slot
@@ -132,7 +132,7 @@ function Commodity(props) {
             </Grid>
           </Grid>
           <Section subtext="Tabel Ikhtisar" heading="Sejarah Pembelian Komoditas" />
-          <MainTable data={rows} headers={["Komoditas", "Jumlah Slot", "Harga Total", "Tanggal Pembelian", "Periode Kontrak", "Kupon Terkumpul"]} />
+          {/* <MainTable data={rows} headers={["Komoditas", "Jumlah Slot", "Harga Total", "Tanggal Pembelian", "Periode Kontrak", "Kupon Terkumpul"]} /> */}
         </Stack>
       </Container>
       <Footer />

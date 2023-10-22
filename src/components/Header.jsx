@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useState, useEffect} from "react";
 import AppBar from "@mui/material/AppBar";
 // import Button from "@mui/material/Button";
 import Toolbar from "@mui/material/Toolbar";
@@ -10,9 +10,17 @@ import Link from "@mui/material/Link";
 import bknLogo from "../assets/Home.svg";
 import Button from "@mui/material/Button";
 import { Box, Grid, Stack } from "@mui/material";
+import { getProfile } from "../service/account";
+import { useNavigate } from "react-router-dom";
 
 export default function Header(props) {
-  const { paths, activeContent } = props;
+  const navigateOut = useNavigate()
+  const { paths, activeContent, profile } = props;
+
+  function logout() {
+    window.sessionStorage.removeItem("auth")
+    window.location.reload()
+  }
 
   return (
     <AppBar
@@ -65,9 +73,22 @@ export default function Header(props) {
               </Grid>
             </Grid>
             <Grid item xs={3} md={2} ml={"auto"}>
+              {
+                profile == "" || profile == undefined ?
               <Button href="/login" variant="contained" sx={{ maxWidth: "100%", maxHeight: "100%", ml: "auto" }}>
                 Masuk
-              </Button>
+              </Button> :
+              (
+                <Stack direction={"row"} spacing={2} sx={{alignItems: "stretch", display: "flex"}}>
+                  <Link href="/profile" sx={{alignItems: "end"}}>
+                    Hi, {profile.name}
+                  </Link>
+                  <Button variant="contained" onClick={logout} color="error">
+                    Keluar
+                  </Button>
+                </Stack>
+              )
+              }
             </Grid>
           </Grid>
         </Container>
