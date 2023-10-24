@@ -1,28 +1,73 @@
-import React from 'react';
-import { Box, Button, Typography } from '@mui/material';
-import { purple } from '@mui/material/colors';
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import TextField from "@mui/material/TextField";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-const primary = purple[500]; // #f44336
+// Components
+// import PropertyList from "../components/marketplace/Property";
+// import HistorySummary from "../../components/surveyor/HistorySummary";
 
-export default function About() {
+import indo from "../assets/Temp.png";
+import Typography from "@mui/material/Typography";
+
+// Components
+import Header from "../components/Header";
+import Section from "../components/Section";
+import MainTable from "../components/Table";
+import Contact from "../components/Contact";
+import Footer from "../components/Footer";
+import { CenterFocusStrong } from "@mui/icons-material";
+
+// Assets
+import bknLogo from "../assets/NewLogo.png";
+import centerimg from "../assets/Temp.png";
+
+// const primary = purple[500]; // #f44336
+
+export default function About(props) {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column',
-        minHeight: '100vh',
-        backgroundColor: primary,
-      }}
-    >
-      <Typography variant="h1" style={{ color: 'white' }}>
-        404
-      </Typography>
-      <Typography variant="h6" style={{ color: 'white' }}>
-        About page is still WIP
-      </Typography>
-      <Button href='/' variant="contained">Back Home</Button>
-    </Box>
+    // <Box
+    //   sx={{
+    //     display: 'flex',
+    //     justifyContent: 'center',
+    //     alignItems: 'center',
+    //     flexDirection: 'column',
+    //     minHeight: '100vh',
+    //     backgroundColor: primary,
+    //   }}
+    // >
+    //   <Typography variant="h1" style={{ color: 'white' }}>
+    //     404
+    //   </Typography>
+    //   <Typography variant="h6" style={{ color: 'white' }}>
+    //     About page is still WIP
+    //   </Typography>
+    //   <Button href='/' variant="contained">Back Home</Button>
+    // </Box>
+    <main>
+      <Header {...props} activeContent="Tentang Kami" />
+      <Container>
+        <Stack>
+          <Grid>
+            <img src={centerimg} alt="" style={{ maxWidth: "100%" }} />
+          </Grid>
+          <Grid justifyContent={"flex-start"} alignItems={"stretch"} spacing={1}>
+            <Typography variant="AboutTopic">Mengenai</Typography>
+          </Grid>
+          <Grid>
+            <img src={bknLogo} alt="" style={{ maxWidth: "20%" }} />
+          </Grid>
+          <Stack spacing={2}>
+            <Typography variant="AboutSubTopic" align="justify" lineHeight={2}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, neque ipsam! Harum saepe animi hic eaque, omnis reiciendis! Amet eligendi inventore reprehenderit! Sed nobis esse, assumenda voluptatum asperiores ea
+              aspernatur?
+            </Typography>
+          </Stack>
+        </Stack>
+      </Container>
+    </main>
   );
 }

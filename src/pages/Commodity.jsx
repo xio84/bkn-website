@@ -56,7 +56,7 @@ const rows = [
 function Commodity(props) {
   return (
     <main>
-      <Header {...props} activeContent="Collections" />
+      <Header {...props} activeContent="Komoditas" />
       <Container maxWidth="xl">
         <Stack spacing={8}>
           <Typography variant="subtitle1" align="left">

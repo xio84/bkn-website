@@ -162,6 +162,22 @@ const theme = createTheme({
       letterSpacing: 0,
       lineHeight: "normal",
     },
+    AboutTopic: {
+      color: "#000000",
+      fontFamily: '"Syne", Helvetica',
+      fontSize: 30,
+      fontWeight: 900,
+      letterSpacing: 0,
+      lineHeight: "normal",
+    },
+    AboutSubTopic: {
+      color: "#00000080",
+      fontFamily: '"Syne", Helvetica',
+      fontSize: 15,
+      fontWeight: 900,
+      letterSpacing: 0,
+      lineHeight: "normal",
+    },
   },
 });
 
