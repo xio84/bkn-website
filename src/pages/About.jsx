@@ -23,7 +23,7 @@ import { CenterFocusStrong } from "@mui/icons-material";
 
 // Assets
 import bknLogo from "../assets/NewLogo.png";
-import centerimg from "../assets/Temp.png";
+import aboutUs from "../assets/AboutUs.png";
 
 // const primary = purple[500]; // #f44336
 
@@ -52,22 +52,24 @@ export default function About(props) {
       <Container>
         <Stack>
           <Grid>
-            <img src={centerimg} alt="" style={{ maxWidth: "100%" }} />
+            <img src={aboutUs} alt="" style={{ maxWidth: "100%" }} />
           </Grid>
-          <Grid justifyContent={"flex-start"} alignItems={"stretch"} spacing={1}>
+          {/* <Grid justifyContent={"flex-start"} alignItems={"stretch"} spacing={1}>
             <Typography variant="AboutTopic">Mengenai</Typography>
-          </Grid>
+          </Grid> */}
           <Grid>
             <img src={bknLogo} alt="" style={{ maxWidth: "20%" }} />
           </Grid>
           <Stack spacing={2}>
             <Typography variant="AboutSubTopic" align="justify" lineHeight={2}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, neque ipsam! Harum saepe animi hic eaque, omnis reiciendis! Amet eligendi inventore reprehenderit! Sed nobis esse, assumenda voluptatum asperiores ea
-              aspernatur?
+              aspernatur? Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, neque ipsam! Harum saepe animi hic eaque, omnis reiciendis! Amet eligendi inventore reprehenderit! Sed nobis esse, assumenda voluptatum asperiores
+              ea aspernatur?
             </Typography>
           </Stack>
         </Stack>
       </Container>
+      <Footer />
     </main>
   );
 }
