@@ -35,7 +35,7 @@ function SignIn(props) {
         >
           <Grid container spacing={2}>
             <Grid item xs={0} md={6} align="center">
-              <Box component={"img"} src={indo} alt="" display={{ xs: "none", md: "block" }} style={{ float: "right", maxWidth: "200%", maxHeight: "200%", margin: "0%" }} />
+              <Box component={"img"} src={indo} alt="" display={{ xs: "none", md: "block" }} style={{ float: "right", maxWidth: "100%", maxHeight: "100%", margin: "0%" }} />
             </Grid>
             <Grid item md={6}>
               <Container maxWidth="lg">
