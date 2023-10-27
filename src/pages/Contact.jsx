@@ -22,49 +22,27 @@ import Footer from "../components/Footer";
 import { CenterFocusStrong } from "@mui/icons-material";
 // const primary = purple[500]; // #f44336
 
-export default function Contact(props) {
-  return (
-    // <Box
-    //   sx={{
-    //     display: 'flex',
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    //     flexDirection: 'column',
-    //     minHeight: '100vh',
-    //     backgroundColor: primary,
-    //   }}
-    // >
-    //   <Typography variant="h1" style={{ color: 'white' }}>
-    //     404
-    //   </Typography>
-    //   <Typography variant="h6" style={{ color: 'white' }}>
-    //     The page you’re looking for doesn’t exist.
-    //   </Typography>
-    //   <Button href='/' variant="contained">Back Home</Button>
-    // </Box>
-    <main>
-      <Header {...props} activeContent="Tentang Kami" />
-      <Container>
-        <Stack>
-          <Grid>
-            <img src={aboutUs} alt="" style={{ maxWidth: "100%" }} />
-          </Grid>
-          {/* <Grid justifyContent={"flex-start"} alignItems={"stretch"} spacing={1}>
-            <Typography variant="AboutTopic">Mengenai</Typography>
-          </Grid> */}
-          <Grid>
-            <img src={bknLogo} alt="" style={{ maxWidth: "20%" }} />
-          </Grid>
-          <Stack spacing={2}>
-            <Typography variant="AboutSubTopic" align="justify" lineHeight={2}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, neque ipsam! Harum saepe animi hic eaque, omnis reiciendis! Amet eligendi inventore reprehenderit! Sed nobis esse, assumenda voluptatum asperiores ea
-              aspernatur? Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, neque ipsam! Harum saepe animi hic eaque, omnis reiciendis! Amet eligendi inventore reprehenderit! Sed nobis esse, assumenda voluptatum asperiores
-              ea aspernatur?
-            </Typography>
-          </Stack>
-        </Stack>
-      </Container>
-      <Footer />
-    </main>
-  );
-}
+// export default function Contact(props) {
+//   return (
+//     <Box
+//       sx={{
+//         display: "flex",
+//         justifyContent: "center",
+//         alignItems: "center",
+//         flexDirection: "column",
+//         minHeight: "100vh",
+//         backgroundColor: primary,
+//       }}
+//     >
+//       <Typography variant="h1" style={{ color: "white" }}>
+//         404
+//       </Typography>
+//       <Typography variant="h6" style={{ color: "white" }}>
+//         The page you’re looking for doesn’t exist.
+//       </Typography>
+//       <Button href="/" variant="contained">
+//         Back Home
+//       </Button>
+//     </Box>
+//   );
+// }
