@@ -6,13 +6,12 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import Typography from "@mui/material/Typography";
 // Components
 // import PropertyList from "../components/marketplace/Property";
 // import HistorySummary from "../../components/surveyor/HistorySummary";
 
 import indo from "../assets/Temp.png";
-import Typography from "@mui/material/Typography";
 
 // Components
 import Header from "../components/Header(sub)";

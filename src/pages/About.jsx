@@ -5,13 +5,13 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Typography from "@mui/material/Typography";
 
 // Components
 // import PropertyList from "../components/marketplace/Property";
 // import HistorySummary from "../../components/surveyor/HistorySummary";
 
 import indo from "../assets/Temp.png";
-import Typography from "@mui/material/Typography";
 
 // Components
 import Header from "../components/Header";
@@ -54,11 +54,8 @@ export default function About(props) {
           <Grid>
             <img src={aboutUs} alt="" style={{ maxWidth: "100%" }} />
           </Grid>
-          {/* <Grid justifyContent={"flex-start"} alignItems={"stretch"} spacing={1}>
-            <Typography variant="AboutTopic">Mengenai</Typography>
-          </Grid> */}
           <Grid>
-            <img src={bknLogo} alt="" style={{ maxWidth: "20%" }} />
+            <img src={bknLogo} alt="" style={{ maxWidth: "20%", paddingTop: "50px" }} />
           </Grid>
           <Stack spacing={2}>
             <Typography variant="AboutSubTopic" align="justify" lineHeight={2}>

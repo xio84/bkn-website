@@ -207,10 +207,10 @@ function Home(props) {
                 <Typography align="left" textDecoration="unset" variant="h1">
                   Bantu Petani
                 </Typography>
-                <Typography align="left" textDecoration="unset" variant="h1">
+                <Typography align="left" textDecoration="unset" variant="h1" lineHeight={1}>
                   Bantu Indonesia
                 </Typography>
-                <Typography variant="body1" align="left" paragraph>
+                <Typography variant="body1" align="left" paragraph lineHeight={2}>
                   KBI menghadirkan sebuah inovasi dalam eksplorasi potensi alam Indonesia dengan teknologi nft.
                 </Typography>
                 <Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="left">
