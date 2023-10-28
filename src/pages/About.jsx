@@ -17,7 +17,6 @@ import indo from "../assets/Temp.png";
 import Header from "../components/Header";
 import Section from "../components/Section";
 import MainTable from "../components/Table";
-import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import { CenterFocusStrong } from "@mui/icons-material";
 

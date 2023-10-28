@@ -16,7 +16,6 @@ import Typography from "@mui/material/Typography";
 import Header from "../components/HeaderSigned";
 import Section from "../components/Section";
 import MainTable from "../components/Table";
-import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import { Card, CardActions, CardContent, CardHeader, CardMedia, Paper } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
@@ -239,7 +238,6 @@ function IndexSigned(props) {
           {/* End list of collections */}
           <Section subtext="Tabel Ikhtisar" heading="Sejarah Pembelian Komoditas" />
           <MainTable data={rows} headers={["Komoditas", "Jumlah Slot", "Harga Total", "Tanggal Pembelian", "Periode Kontrak", "Kupon Terkumpul"]} />
-          <Contact />
         </Stack>
       </Container>
       <Footer />

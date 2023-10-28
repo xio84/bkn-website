@@ -17,7 +17,6 @@ import indo from "../assets/Temp.png";
 import Header from "../components/Header(sub)";
 import Section from "../components/Section";
 import MainTable from "../components/Table";
-import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import { CenterFocusStrong } from "@mui/icons-material";
 
@@ -88,8 +87,6 @@ function SignUp(props) {
             </Grid>
           </Grid>
         </Box>
-
-        <Contact />
       </Container>
     </main>
   );

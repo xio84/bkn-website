@@ -16,7 +16,6 @@ import Typography from "@mui/material/Typography";
 import Header from "../components/Header";
 import Section from "../components/Section";
 import MainTable from "../components/Table";
-import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import { Divider } from "@mui/material";
 

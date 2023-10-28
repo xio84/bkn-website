@@ -18,7 +18,7 @@ import Error from "./pages/404";
 import About from "./pages/About";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import Contact from "./components/Contact";
+import Contact from "./pages/Contact";
 import Faq from "./pages/Faq";
 import IndexSigned from "./pages/IndexSigned";
 import CommoditySigned from "./pages/CommoditySigned";
