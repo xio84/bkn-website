@@ -20,6 +20,10 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Contact from "./components/Contact";
 import Faq from "./pages/Faq";
+import IndexSigned from "./pages/IndexSigned";
+import CommoditySigned from "./pages/CommoditySigned";
+import ContactSigned from "./pages/ContactSigned";
+import FaqSigned from "./pages/FaqSigned";
 
 const theme = createTheme({
   palette: {
@@ -214,6 +218,10 @@ export default function BasicTabs() {
           <Route path="/signin" element={<SignIn paths={paths} />}></Route>
           <Route path="/signup" element={<SignUp paths={paths} />}></Route>
           <Route path="/faq" element={<Faq paths={paths} />}></Route>
+          <Route path="/indexsigned" element={<IndexSigned paths={paths} />}></Route>
+          <Route path="/commoditysigned" element={<CommoditySigned paths={paths} />}></Route>
+          <Route path="/contactsigned" element={<CommoditySigned paths={paths} />}></Route>
+          <Route path="/faqsigned" element={<CommoditySigned paths={paths} />}></Route>
           {/* <Route path="*" element={<Error />} /> */}
         </Routes>
       </Router>

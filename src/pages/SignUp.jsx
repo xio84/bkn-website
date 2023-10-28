@@ -24,7 +24,7 @@ import { CenterFocusStrong } from "@mui/icons-material";
 function SignUp(props) {
   return (
     <main>
-      <Header {...props} activeContent="SignIn" />
+      <Header {...props} activeContent="SignUp" />
       <Container maxWidth="lg">
         <Box
           sx={{
@@ -73,16 +73,13 @@ function SignUp(props) {
                     </div>
                   </Box>
                 }
-                <Button variant="contained" style={{ height: 45, width: 355, marginTop: 10, marginLeft: 84 }}>
+                <Button href="/indexsigned" variant="contained" style={{ height: 45, width: 355, marginTop: 10, marginLeft: 84 }}>
                   Buat Akun Baru
                 </Button>
                 <Grid textAlign={"center"}>
                   <br></br>
 
                   <Typography variant="HelpBold">Sudah Memiliki Akun? </Typography>
-                  {/* <Typography display={"inline"} variant="Help">
-                    Sign In.
-                  </Typography> */}
                   <a href="/signin" variant="HelpBold">
                     Masuk.
                   </a>
@@ -94,8 +91,6 @@ function SignUp(props) {
 
         <Contact />
       </Container>
-
-      <Footer />
     </main>
   );
 }

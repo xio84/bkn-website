@@ -2,8 +2,15 @@ import * as React from "react";
 import Typography from "@mui/material/Typography";
 import { Stack, Container, TextField, Button, Grid } from "@mui/material";
 
+//Components
+import Header from "../components/Header";
+import Section from "../components/Section";
+import MainTable from "../components/Table";
+import Footer from "../components/Footer";
+import { CenterFocusStrong } from "@mui/icons-material";
+
 export default function Contact(props) {
-  return null
+  return null;
   return (
     <Container
       maxWidth="false"

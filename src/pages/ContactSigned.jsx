@@ -14,10 +14,10 @@ import indo from "../assets/Temp.png";
 import Typography from "@mui/material/Typography";
 
 // Components
-import Header from "../components/Header";
+import Header from "../components/HeaderSigned";
 import Section from "../components/Section";
 import MainTable from "../components/Table";
-import Contact from "../components/ContactList";
+import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import { CenterFocusStrong } from "@mui/icons-material";
 // const primary = purple[500]; // #f44336

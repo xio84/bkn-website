@@ -67,16 +67,13 @@ function SignIn(props) {
                     </div>
                   </Box>
                 }
-                <Button variant="contained" style={{ height: 45, width: 335, marginTop: 10, marginLeft: 93 }}>
+                <Button href="/indexsigned" variant="contained" style={{ height: 45, width: 335, marginTop: 10, marginLeft: 93 }}>
                   Masuk
                 </Button>
                 <Grid textAlign={"center"}>
                   <br></br>
 
                   <Typography variant="HelpBold">Belum Memiliki Akun? </Typography>
-                  {/* <Typography display={"inline"} variant="Help">
-                    Buat Akun.
-                  </Typography> */}
                   <a href="/signup" variant="HelpBold">
                     Buat Akun.
                   </a>
@@ -88,8 +85,6 @@ function SignIn(props) {
 
         <Contact />
       </Container>
-
-      <Footer />
     </main>
   );
 }
